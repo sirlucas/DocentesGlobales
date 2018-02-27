@@ -15,7 +15,7 @@
 							y administrativos, tanto UDD como extranjeros, es que hemos establecido
 							como procedimiento completar los siguientes formularios, que servirán de
 							plataforma para generar reportes concretos sobre esta materia.</p>
-							
+
 						<!-- box internos -->
 						<div class="col-md-6">
 							<div class="box">
