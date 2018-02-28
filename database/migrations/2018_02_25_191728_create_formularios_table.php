@@ -17,8 +17,6 @@ class CreateFormulariosTable extends Migration
             $table->increments('id');
             // datos personales
             $table->string('nombres',50);
-            $table->string('paterno',50);
-            $table->string('materno',50);
             $table->string('rut',10)->unique();
             $table->string('email');
             $table->integer('telefono');

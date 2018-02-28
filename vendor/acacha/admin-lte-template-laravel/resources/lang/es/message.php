@@ -140,4 +140,5 @@ return [
     'mantenimiento'           => 'Página en mantenimiento...',
     'newform'                 => 'Nuevo formulario',
     'editform'                => 'Editar formulario existente',
+    'formheader'             => 'Este formulario debe ser completado por cualquier docente y/o administrativo UDD que viiste una institución extranjera y cuyo proposito sea una actividad Académica.',
 ];

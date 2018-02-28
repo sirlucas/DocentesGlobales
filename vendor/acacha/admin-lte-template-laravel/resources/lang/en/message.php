@@ -143,4 +143,5 @@ return [
     'mantenimiento'           => 'Page in maintenance...',
     'newform'                 => 'New form',
     'editform'                => 'Edit existing form',
+    'formheader'             => 'This form must be completed by any teacher and/or administrative UDD who visits a foreign institution and whose purpose is an academic activity.',
 ];

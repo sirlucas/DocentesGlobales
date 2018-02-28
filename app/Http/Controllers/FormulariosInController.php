@@ -28,12 +28,22 @@ class FormulariosInController extends Controller
 
   public function create(Request $request)
   {
-	$medicos = Doctor::orderBy('nombres', 'asc')->get();
-  	$estados = Status::All();
-  	$indice=Index_file::All();
-	return view('ficha.create')->with('medicos',$medicos)
-                             ->with('estados',$estados)
-                             ->with('indice',$indice);
+	$cities          = City::orderBy('ciudad', 'asc')->get();
+  $countries       = Country::All();
+  $cargos          = DomCargo::All();
+  $clasificaciones = DomClasificacion::All();
+  $unidades        = DomFaculty::All();
+  $sedes           = DomSede::All();
+  $actividades     = DomActivity::All();
+  $currencies      = Currency::All();
+	return view('formularioIn.create')->with('cities',$cities)
+                                    ->with('countries',$countries)
+                                    ->with('cargos',$cargos)
+                                    ->with('clasis',$clasificaciones)
+                                    ->with('unidades',$unidades)
+                                    ->with('sedes',$sedes)
+                                    ->with('actividades',$actividades)
+                                    ->with('divisas',$currencies);
   }
 
   public function edit($id){
