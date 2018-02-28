@@ -18,13 +18,9 @@
 
 						<!-- box internos -->
 						<div class="col-md-6">
-							<div class="box">
+							<div class="">
 								<div class="box-header with-border">
 										<h4 class="box-title">Docentes y Administrativos Internos</h4>
-										<div class="box-tools pull-right">
-											<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-												<i class="fa fa-minus"></i></button>
-										</div>
 								</div>
 								<!-- box body -->
 								<div class="box-body">
@@ -39,13 +35,9 @@
 
 						<!-- box externos -->
 						<div class="col-md-6">
-							<div class="box">
+							<div class="">
 								<div class="box-header with-border">
 										<h4 class="box-title">Docentes y Administrativos Externos</h4>
-										<div class="box-tools pull-right">
-											<button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-												<i class="fa fa-minus"></i></button>
-										</div>
 								</div>
 								<!-- box body -->
 								<div class="box-body">
