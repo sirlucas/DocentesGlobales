@@ -7,6 +7,8 @@
 
     <link href="{{ asset('/css/all.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/css/custom-style.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('/plugins/select2.min.css')}}">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,6 +29,6 @@
             }
             $trans['adminlte_lang_message'] = trans('adminlte_lang::message');
             echo json_encode($trans);
-        @endphp      
+        @endphp
     </script>
 </head>

@@ -8,6 +8,16 @@
 <?php $__env->startSection('contentheader_description','Formulario de Visita internacional - Interno'); ?>
 
 <?php $__env->startSection('main-content'); ?>
+
+<?php if($message = Session::get('success')): ?>
+
+		<div class="alert alert-success">
+
+				<p><?php echo e($message); ?></p>
+
+		</div>
+
+<?php endif; ?>
 <div class="container-fluid spark-screen">
   <div class="row">
     <div class="col-md-12">
@@ -22,7 +32,7 @@
             </div>
           </div>
           <div class="box-body">
-						<a href="#" class="btn btn-app">
+						<a href="<?php echo e(route('formin.create')); ?>" class="btn btn-app">
 							<i class="fa fa-plus"></i>
 							<?php echo e(trans('adminlte_lang::message.newform')); ?>
 
@@ -58,6 +68,19 @@
                   <th>Acciones</th>
                 </tr>
               </thead>
+							<tbody>
+								<?php $__currentLoopData = $forms; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $form): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+								<tr>
+									<td><?php echo e(++$i); ?></td>
+									<td><?php echo e($form->institucion_anf); ?></td>
+									<td><?php echo e($form->fecha_ida); ?></td>
+									<td>
+										<a class="btn btn-info" href="<?php echo e(route('formin.show',$form->id)); ?>">Show</a>
+										<a class="btn btn-primary" href="<?php echo e(route('formin.edit',$form->id)); ?>">Edit</a>
+									</td>
+								</tr>
+							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+							</tbody>
             </table>
           </div>
           <!-- /.box-body -->

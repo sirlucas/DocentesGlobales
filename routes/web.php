@@ -25,7 +25,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('formex',['name' => 'formex','uses' => 'FormulariosExController@index']);
 
-    Route::get('formin',  ['name' => 'formin','uses' => 'FormulariosInController@index']);
-    Route::get('formin/create',  ['name' => 'formcreate','uses' => 'FormulariosInController@create']);
+
+    Route::get('formin/getCities','FormulariosInController@getCities');
+    Route::resource('formin','FormulariosInController');
 
 });

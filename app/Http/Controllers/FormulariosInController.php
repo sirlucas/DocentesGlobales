@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 use App\City;
 use App\Country;
@@ -23,10 +24,13 @@ class FormulariosInController extends Controller
 {
   public function index()
   {
-      return view('formularioIn.index');
+    $forms = Formulario::latest()->paginate(5);
+
+      return view('formularioIn.index',compact('forms'))
+        ->with('i', (request()->input('page', 1) - 1) * 5);
   }
 
-  public function create(Request $request)
+  public function create()
   {
 	$cities          = City::orderBy('ciudad', 'asc')->get();
   $countries       = Country::All();
@@ -46,13 +50,36 @@ class FormulariosInController extends Controller
                                     ->with('divisas',$currencies);
   }
 
+  public function store(Request $request){
+
+    Formulario::create($request->all());
+
+
+    return redirect()->route('formularioIn.index')
+
+                    ->with('success','Formulario Ingresado Correctamente.');
+
+  }
+
   public function edit($id){
+
+  }
+
+  public function show($id){
 
   }
 
   public function update(Request $request, $id){
 
   }
+
+  // Funcion para enviar datos de ciudades que pertenencen a un pais.
+    public function getCities(Request $request){
+      if($request->ajax()){
+        $ciudades=City::ciudadesPorPais($request->id);
+        return response()->json($ciudades);
+      }
+    }
 
 
 }

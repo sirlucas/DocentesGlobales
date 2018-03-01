@@ -77,6 +77,7 @@ class ComposerStaticInit529fd43baf586bc22d6c299dcdb0c968
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Malahierba\\ChileRut\\' => 20,
         ),
         'L' => 
         array (
@@ -241,6 +242,10 @@ class ComposerStaticInit529fd43baf586bc22d6c299dcdb0c968
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Malahierba\\ChileRut\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/malahierba-lab/chile-rut/src',
         ),
         'League\\Flysystem\\' => 
         array (
@@ -442,6 +447,7 @@ class ComposerStaticInit529fd43baf586bc22d6c299dcdb0c968
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\ForminCreateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ForminCreateRequest.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -2076,6 +2082,9 @@ class ComposerStaticInit529fd43baf586bc22d6c299dcdb0c968
         'League\\Flysystem\\Util\\ContentListingFormatter' => __DIR__ . '/..' . '/league/flysystem/src/Util/ContentListingFormatter.php',
         'League\\Flysystem\\Util\\MimeType' => __DIR__ . '/..' . '/league/flysystem/src/Util/MimeType.php',
         'League\\Flysystem\\Util\\StreamHasher' => __DIR__ . '/..' . '/league/flysystem/src/Util/StreamHasher.php',
+        'Malahierba\\ChileRut\\ChileRut' => __DIR__ . '/..' . '/malahierba-lab/chile-rut/src/ChileRut.php',
+        'Malahierba\\ChileRut\\ChileRutServiceProvider' => __DIR__ . '/..' . '/malahierba-lab/chile-rut/src/ChileRutServiceProvider.php',
+        'Malahierba\\ChileRut\\Facades\\ChileRut' => __DIR__ . '/..' . '/malahierba-lab/chile-rut/src/Facades/ChileRut.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',

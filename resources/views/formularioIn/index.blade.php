@@ -9,6 +9,16 @@
 @section('contentheader_description','Formulario de Visita internacional - Interno')
 
 @section('main-content')
+
+@if ($message = Session::get('success'))
+
+		<div class="alert alert-success">
+
+				<p>{{ $message }}</p>
+
+		</div>
+
+@endif
 <div class="container-fluid spark-screen">
   <div class="row">
     <div class="col-md-12">
@@ -23,7 +33,7 @@
             </div>
           </div>
           <div class="box-body">
-						<a href="#" class="btn btn-app">
+						<a href="{{ route('formin.create') }}" class="btn btn-app">
 							<i class="fa fa-plus"></i>
 							{{ trans('adminlte_lang::message.newform') }}
 						</a>
@@ -57,6 +67,19 @@
                   <th>Acciones</th>
                 </tr>
               </thead>
+							<tbody>
+								@foreach ($forms as $form)
+								<tr>
+									<td>{{ ++$i }}</td>
+									<td>{{ $form->institucion_anf }}</td>
+									<td>{{ $form->fecha_ida }}</td>
+									<td>
+										<a class="btn btn-info" href="{{ route('formin.show',$form->id) }}">Show</a>
+										<a class="btn btn-primary" href="{{ route('formin.edit',$form->id) }}">Edit</a>
+									</td>
+								</tr>
+							@endforeach
+							</tbody>
             </table>
           </div>
           <!-- /.box-body -->

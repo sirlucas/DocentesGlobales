@@ -32,7 +32,7 @@
         <ul class="sidebar-menu">
             <li class="active"><a href="<?php echo e(url('home')); ?>"><i class='fa fa-home'></i> <span><?php echo e(trans('adminlte_lang::message.home')); ?></span></a></li>
             <li class="header"><?php echo e(trans('adminlte_lang::message.forms')); ?></li>
-            <li class=""><a href="<?php echo e(url('formin')); ?>"><i class='fa fa-pencil'></i> <span><?php echo e(trans('adminlte_lang::message.forminterno')); ?></span></a></li>
+            <li class=""><a href="<?php echo e(route('formin.index')); ?>"><i class='fa fa-pencil'></i> <span><?php echo e(trans('adminlte_lang::message.forminterno')); ?></span></a></li>
             <li class=""><a href="<?php echo e(url('formex')); ?>"><i class='fa fa-pencil'></i> <span><?php echo e(trans('adminlte_lang::message.formexterno')); ?></span></a></li>
         </ul><!-- /.sidebar-menu -->
     </section>

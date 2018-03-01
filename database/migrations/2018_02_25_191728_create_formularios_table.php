@@ -17,7 +17,7 @@ class CreateFormulariosTable extends Migration
             $table->increments('id');
             // datos personales
             $table->string('nombres',50);
-            $table->string('rut',10)->unique();
+            $table->string('rut',10);
             $table->string('email');
             $table->integer('telefono');
             $table->integer('dom_cargo_id')->unsigned();
@@ -26,31 +26,31 @@ class CreateFormulariosTable extends Migration
             $table->integer('dom_sede_id')->unsigned();// sede UDD correspondiente
             // datos institucion anfitriona
             $table->string('institucion_anf',100);
-            $table->string('inst_descripcion',150);
-            $table->string('website',100);
+            $table->string('inst_descripcion',150)->nullable();
+            $table->integer('dom_actividad_id')->unsigned();
+            $table->integer('dom_ciudad_id')->unsigned();
+            $table->string('website',100)->nullable();
             // datos de contacto anfitrion
-            $table->string('contacto_anf',100);
-            $table->string('cont_cargo',50);
-            $table->string('cont_email',50);
-            $table->integer('cont_fono');
+            $table->string('contacto_anf',100)->nullable();
+            $table->string('cont_cargo',50)->nullable();
+            $table->string('cont_email',50)->nullable();
+            $table->integer('cont_fono')->nullable();
             //fecha de viaje y motivos
             $table->date('fecha_ida');
             $table->date('fecha_retorno');
             $table->integer('dom_clasificacion_id')->unsigned();
-            $table->string('proposito',200); //proposito de la visita
-            $table->integer('dom_actividad_id')->unsigned();
-            $table->integer('dom_ciudad_id')->unsigned();
+            $table->string('proposito',200)->nullable(); //proposito de la visita
             //formulario DDCA
-            $table->integer('duracion_act');//duracion de la actividad en horas
+            $table->integer('duracion_act')->nullable();//duracion de la actividad en horas (si es menos de 100horas)
             $table->enum('Incluido_en_plan_de_trabajo', ['Si','No','Por Ingresar']);
-            $table->decimal('inscripcion',10,2); //inscripcion/matricula
-            $table->decimal('arancel',10,2);
-            $table->decimal('pasajes',10,2);
-            $table->decimal('viatico',10,2);
-            $table->decimal('otros',10,2);
-            $table->decimal('total',10,2);
+            $table->decimal('inscripcion',10,2)->nullable(); //inscripcion/matricula
+            $table->decimal('arancel',10,2)->nullable();
+            $table->decimal('pasajes',10,2)->nullable();
+            $table->decimal('viatico',10,2)->nullable();
+            $table->decimal('otros',10,2)->nullable();
+            $table->decimal('total',10,2)->nullable();
             $table->integer('currency_id')->unsigned();
-            $table->string('observaciones',200);
+            $table->string('observaciones',200)->nullable();
             $table->timestamps();
 
             $table->foreign('dom_cargo_id')->references('id')->on('dom_cargos')->onDelete('no action');
