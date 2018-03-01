@@ -8,7 +8,7 @@
     box-sizing: border-box;
     cursor: pointer;
     display: block;
-    height: 28px;
+    height: 23px;
     user-select: none;
     -webkit-user-select: none; }
     .select2-container .select2-selection--single .select2-selection__rendered {
@@ -130,8 +130,8 @@
   border: 1px solid #aaa;
   border-radius: 4px; }
   .select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #444;
-    line-height: 28px; }
+    color: #B1B7C9;
+    line-height: 23px; }
   .select2-container--default .select2-selection--single .select2-selection__clear {
     cursor: pointer;
     float: right;

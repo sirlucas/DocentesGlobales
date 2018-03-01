@@ -5,6 +5,9 @@
 <script src="<?php echo e(url (mix('/js/app.js'))); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/js/dropdown.js')); ?>" type="text/javascript"></script>
 <script src="<?php echo e(asset('/plugins/select2.min.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/plugins/wizardstep.min.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/plugins/bootstrap-datepicker.es.js')); ?>" type="text/javascript"></script>
+<script src="<?php echo e(asset('/plugins/bootstrap-datepicker.js')); ?>" type="text/javascript"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
       Both of these plugins are recommended to enhance the

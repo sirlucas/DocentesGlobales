@@ -1,6 +1,12 @@
 
 $(document).ready(function(){
    $('.select2').select2();
+
+   $('.datepicker').datepicker({
+     autoclose: true,
+     format: "yyyy/mm/dd",
+     language: "es"
+   });
   $(document).on('change','#countries',function(){
     var country_id=$(this).val();
     var div=$(this).parent();

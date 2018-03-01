@@ -7,3 +7,7 @@
 .header-form p{
   margin: 0 0 0;
 }
+
+textarea {
+resize: vertical;
+}
