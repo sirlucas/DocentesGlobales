@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateDomFacultiesTable extends Migration
 {
     /**
-     * Run the migrations.
+     *
      *
      * @return void
      */
@@ -16,6 +16,7 @@ class CreateDomFacultiesTable extends Migration
         Schema::create('dom_faculties', function (Blueprint $table) {
             $table->increments('id',2);
             $table->string('unidad',100);
+            $table->string('autoridad',100)->nullable();
             $table->timestamps();
         });
     }

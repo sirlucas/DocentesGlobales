@@ -25,8 +25,8 @@ class ForminCreateRequest extends FormRequest
     {
         return [
           'nombres'                     => 'required | max:50',
-          'rut'                         => 'required',
-          'email'                       => 'required',
+          'rut'                         => 'required | max:10',
+          'email'                       => 'required | ',
           'telefono'                    => 'required',
           'dom_cargo_id'                => 'required',
           'dom_unidad_id'               => 'required',
