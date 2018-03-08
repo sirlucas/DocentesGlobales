@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ForminCreateRequest;
 use Illuminate\Support\Facades\Validator;
 
 use App\City;
@@ -22,6 +23,9 @@ use App\Auth;
 // Controlador para Formularios de administrativos y docentes internos.
 class FormulariosInController extends Controller
 {
+
+
+  /* @param  StoreBlogPostRequest  $request */
   public function index()
   {
     $forms = Formulario::latest()->paginate(5);
@@ -50,7 +54,7 @@ class FormulariosInController extends Controller
                                     ->with('divisas',$currencies);
   }
 
-  public function store(Request $request){
+  public function store(ForminCreateRequest $request){
 
     Formulario::create($request->all());
 
@@ -81,5 +85,13 @@ class FormulariosInController extends Controller
       }
     }
 
+    // Funcion para enviar isologo de divisa
+      public function getCurrency(Request $request){
+        if($request->ajax()){
+          $divisa=Currency::findOrFail($request->id);
+          dd($divisa);
+          return response()->json($divisa);
+        }
+      }
 
 }

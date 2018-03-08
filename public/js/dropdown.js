@@ -18,7 +18,7 @@ $(document).ready(function(){
       data:{'id':country_id},
       dataType: 'json',
       success:function(data){
-
+        console.log(data);
         $('#cities').empty();
         op+='<option value="0" selected disabled>Seleccione una ciudad</option>';
         for(var i=0;i<data.length;i++){
@@ -31,4 +31,16 @@ $(document).ready(function(){
       }
     });
   });
+
+  $('[data-toggle="boostrap-wizard-step"]').boostrapWizardStep({
+    startStep: 0,
+    onNextStep: callback,
+    onBackStep: callback,
+    onJumpBack: callback,
+    tabIdentifier:  "#wizard-steps",
+    contentIdentifier:  "#wizard-content",
+    btnNextIdentifier:  "#sgte",
+    btnPreviousIdentifier:  "#atras"
+  });
+
 });

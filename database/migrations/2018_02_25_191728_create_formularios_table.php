@@ -16,7 +16,7 @@ class CreateFormulariosTable extends Migration
         Schema::create('formularios', function (Blueprint $table) {
             $table->increments('id');
             // datos personales
-            $table->string('nombres',50);
+            $table->string('nombre',50);
             $table->string('rut',10);
             $table->string('email');
             $table->integer('telefono');
@@ -51,6 +51,8 @@ class CreateFormulariosTable extends Migration
             $table->decimal('total',10,2)->nullable();
             $table->integer('currency_id')->unsigned();
             $table->string('observaciones',200)->nullable();
+            // otros campos
+            $table->string('colaboracion',200)->nullable();//colaboraiciones U. anfitriona con UDD
             $table->timestamps();
 
             $table->foreign('dom_cargo_id')->references('id')->on('dom_cargos')->onDelete('no action');

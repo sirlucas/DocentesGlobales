@@ -8,7 +8,7 @@ class Formulario extends Model
 {
   protected $table = 'formularios';
   protected $fillable = [
-      'nombres','rut','email',
+      'nombre','rut','email',
       'telefono','dom_cargo_id','dom_unidad_id','dom_carrera_id',
       'dom_sede_id','institucion_anf','inst_descripcion','website',
       'contacto_anf','cont_cargo','cont_email','cont_fono','fecha_ida',
