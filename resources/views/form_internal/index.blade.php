@@ -54,7 +54,7 @@
 									<td>
 									</td>
 									<td>
-										<a id="imp" class="btn bg-orange btn-xs"	data-toggle="tooltip" data-placement="left" title="Imprimir Formularios"><i class="glyphicon glyphicon-print"></i></a>
+										<a id="imp" class="btn bg-orange btn-xs" role="button" onclick="return hola('asdf')"	data-toggle="tooltip" data-placement="left" title="Imprimir Formularios"><i class="glyphicon glyphicon-print"></i></a>
 									<!--	<a id="imp" class="btn bg-orange btn-xs" data-toggle="tooltip" data-placement="left" title="Imprimir Formularios"><i class="glyphicon glyphicon-print"></i></a>-->
 										<a class="btn btn-primary btn-xs" href="{{ route('formin.edit',$form->id) }}" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
 										<a class="btn btn-success btn-xs" href="{{ route('formin.edit',$form->id) }}" data-toggle="tooltip" data-placement="top" title="Reciclar datos"><i class="fa fa-recycle"></i></a>

@@ -1,3 +1,84 @@
+/* -------------------------------------------------------------------------- */
+/* Main header app
+/* -------------------------------------------------------------------------- */
+
+
+.main-header .logo {
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+  display: block;
+  float: left;
+  height: 52.4px;
+  font-size: 20px;
+  line-height: 50px;
+  text-align: center;
+  width: 230px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 0 15px;
+  font-weight: 300;
+  overflow: hidden;
+}
+.main-header .logo .logo-lg {
+  display: block;
+  /*Modificaciones por Sirlucast*/
+  background-image: url(../img/set_corporativos/logo-lg.png);
+  background-position: center 0px;
+  width: 215px;
+  height: 40px;
+}
+
+.main-header .logo .logo-mini {
+  display: none;
+  background-image: url(../img/set_corporativos/udd-nano.png);
+  width: 50px;
+  height: 50px;
+}
+.main-header .navbar-brand {
+  color: #fff;
+}
+.content-header {
+  position: relative;
+  padding: 15px 15px 0 15px;
+}
+.content-header > h1 {
+  margin: 0;
+  font-size: 24px;
+}
+.content-header > h1 > small {
+  font-size: 15px;
+  display: inline-block;
+  padding-left: 4px;
+  font-weight: 300;
+}
+.content-header > .breadcrumb {
+  float: right;
+  background: transparent;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+  padding: 7px 5px;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  border-radius: 2px;
+}
+.content-header > .breadcrumb > li > a {
+  color: #444;
+  text-decoration: none;
+  display: inline-block;
+}
+.content-header > .breadcrumb > li > a > .fa,
+.content-header > .breadcrumb > li > a > .glyphicon,
+.content-header > .breadcrumb > li > a > .ion {
+  margin-right: 5px;
+}
+.content-header > .breadcrumb > li + li:before {
+  content: '>\00a0';
+}
+
+/* -------------------------------------------------------------------------- */
+/* Custom styles
+/* -------------------------------------------------------------------------- */
 
 .content{
   padding-top: 0;

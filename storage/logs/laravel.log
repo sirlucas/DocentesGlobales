@@ -14280,3 +14280,49 @@ Did you mean this?
 #39 /home/vagrant/udd/UDD/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #40 {main}
 "} 
+[2018-03-22 19:33:45] local.ERROR: Class 'Barryvdh\Snappy\ServiceProvider' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'Barryvdh\\Snappy\\ServiceProvider' not found at /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:208)
+[stacktrace]
+#0 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(144): Illuminate\\Foundation\\ProviderRepository->createProvider('Barryvdh\\\\Snappy...')
+#1 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(61): Illuminate\\Foundation\\ProviderRepository->compileManifest(Array)
+#2 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(561): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(213): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(296): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(119): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 /home/vagrant/udd/UDD/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2018-03-22 19:36:05] local.ERROR: Class 'Barryvdh\Snappy\ServiceProvider' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'Barryvdh\\Snappy\\ServiceProvider' not found at /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:208)
+[stacktrace]
+#0 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(144): Illuminate\\Foundation\\ProviderRepository->createProvider('Barryvdh\\\\Snappy...')
+#1 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php(61): Illuminate\\Foundation\\ProviderRepository->compileManifest(Array)
+#2 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(561): Illuminate\\Foundation\\ProviderRepository->load(Array)
+#3 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php(17): Illuminate\\Foundation\\Application->registerConfiguredProviders()
+#4 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(213): Illuminate\\Foundation\\Bootstrap\\RegisterProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#5 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(296): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#6 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(119): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#7 /home/vagrant/udd/UDD/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#8 {main}
+"} 
+[2018-03-22 19:49:21] local.ERROR: Unable to detect application namespace. {"exception":"[object] (RuntimeException(code: 0): Unable to detect application namespace. at /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:1194)
+[stacktrace]
+#0 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Console/DetectsApplicationNamespace.php(16): Illuminate\\Foundation\\Application->getNamespace()
+#1 /home/vagrant/udd/UDD/vendor/acacha/admin-lte-template-laravel/src/Providers/AdminLTETemplateServiceProvider.php(118): Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider->getAppNamespace()
+#2 /home/vagrant/udd/UDD/vendor/acacha/admin-lte-template-laravel/src/Providers/AdminLTETemplateServiceProvider.php(87): Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider->defineRoutes()
+#3 [internal function]: Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider->boot()
+#4 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(29): call_user_func_array(Array, Array)
+#5 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(87): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#6 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(31): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#7 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Container/Container.php(549): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#8 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(792): Illuminate\\Container\\Container->call(Array)
+#9 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(775): Illuminate\\Foundation\\Application->bootProvider(Object(Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider))
+#10 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider), 24)
+#11 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(776): array_walk(Array, Object(Closure))
+#12 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#13 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(213): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#14 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(162): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#15 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(146): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#16 /home/vagrant/udd/UDD/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(116): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#17 /home/vagrant/udd/UDD/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#18 {main}
+"} 

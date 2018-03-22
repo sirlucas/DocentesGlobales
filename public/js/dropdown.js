@@ -1,3 +1,9 @@
+function hola(campo){
+  console.log(campo);
+
+  $('#popup').modal('show')
+  return true;
+}
 function validaRut(campo){
 	if ( campo.length == 0 ){ return false; }
 	if ( campo.length < 8 ){ return false; }
@@ -369,6 +375,7 @@ $(document).ready(function(){
     //$('.phone').inputmask('(+99) 9999-9999', {numericInput: true });    //123456  =>  € ___.__1.234,56
 
     $('div.alert').delay(3000).fadeOut(350);
+
 
 
 // select anidado para ciuades y paises

@@ -52,7 +52,7 @@ class PdfController extends Controller
   }
 
 //formulario par autorizacion de viajes academicos INgenieria UDD
-  public function iudd($id){
+  public function facultad($id){
     $data = $this->getData();
     $date = date('Y-m-d');
     $invoice = "2222";
