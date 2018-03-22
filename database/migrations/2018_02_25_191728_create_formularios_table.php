@@ -16,10 +16,10 @@ class CreateFormulariosTable extends Migration
         Schema::create('formularios', function (Blueprint $table) {
             $table->increments('id');
             // datos personales
-            $table->string('nombre',50);
+            $table->string('nombre',100);
             $table->string('rut',10);
-            $table->string('email');
-            $table->integer('telefono');
+            $table->string('email',50);
+            $table->integer('telefono')->nullable();
             $table->integer('dom_cargo_id')->unsigned();
             $table->integer('dom_unidad_id')->unsigned();
             $table->integer('dom_carrera_id')->unsigned();
@@ -42,17 +42,11 @@ class CreateFormulariosTable extends Migration
             $table->string('proposito',200)->nullable(); //proposito de la visita
             //formulario DDCA
             $table->integer('duracion_act')->nullable();//duracion de la actividad en horas (si es menos de 100horas)
-            $table->enum('Incluido_en_plan_de_trabajo', ['Si','No','Por Ingresar']);
-            $table->decimal('inscripcion',10,2)->nullable(); //inscripcion/matricula
-            $table->decimal('arancel',10,2)->nullable();
-            $table->decimal('pasajes',10,2)->nullable();
-            $table->decimal('viatico',10,2)->nullable();
-            $table->decimal('otros',10,2)->nullable();
-            $table->decimal('total',10,2)->nullable();
-            $table->integer('currency_id')->unsigned();
-            $table->string('observaciones',200)->nullable();
+            $table->enum('ipt', ['Si','No','Por Ingresar']); //incluido en plan de trabajo?
             // otros campos
+            $table->string('observaciones',200)->nullable();
             $table->string('colaboracion',200)->nullable();//colaboraiciones U. anfitriona con UDD
+            $table->string('plane_estudio',50)->nullable();// para planes de estudios (magister, diplomados, especialidad o postitulo)
             $table->timestamps();
 
             $table->foreign('dom_cargo_id')->references('id')->on('dom_cargos')->onDelete('no action');
@@ -62,7 +56,6 @@ class CreateFormulariosTable extends Migration
             $table->foreign('dom_clasificacion_id')->references('id')->on('dom_clasificacions')->onDelete('no action');
             $table->foreign('dom_actividad_id')->references('id')->on('dom_activities')->onDelete('no action');
             $table->foreign('dom_ciudad_id')->references('id')->on('cities')->onDelete('no action');
-            $table->foreign('currency_id')->references('idcurrency')->on('currencies')->onDelete('no action');
         });
     }
 

@@ -6,10 +6,10 @@
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <link href="<?php echo e(asset('/css/all.css')); ?>" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
     <link href="<?php echo e(asset('/css/custom-style.css')); ?>" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo e(asset('/plugins/select2.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('/plugins/datepicker3.css')); ?>">
-
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

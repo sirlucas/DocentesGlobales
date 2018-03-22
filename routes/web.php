@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     Route::get('formin/getCities','FormulariosInController@getCities');
+    Route::get('formin/getCareer','FormulariosInController@getCarrer');
     Route::resource('formin','FormulariosInController');
 
 });
+Route::get('generatepdf','FormulariosInController@generatePDF');

@@ -10,10 +10,10 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="box box-orange">
 					<div class="box-body">
-						<p>Con el objetivo de llevar registro de la movilidad internacional de docentes
+		<!--				<p>Con el objetivo de llevar registro de la movilidad internacional de docentes
 							y administrativos, tanto UDD como extranjeros, es que hemos establecido
 							como procedimiento completar los siguientes formularios, que servirán de
-							plataforma para generar reportes concretos sobre esta materia.</p>
+							plataforma para generar reportes concretos sobre esta materia.</p> -->
 
 						<!-- box internos -->
 						<div class="col-md-6">

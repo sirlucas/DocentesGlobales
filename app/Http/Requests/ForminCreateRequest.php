@@ -24,10 +24,10 @@ class ForminCreateRequest extends FormRequest
     public function rules()
     {
         return [
-          'nombre'                     => 'required | max:50',
+          'nombre'                      => 'required | min:6 | max:50',
           'rut'                         => 'required | max:10',
           'email'                       => 'required | email | min: 5 | max: 50',
-          'telefono'                    => 'required | min: 6 | max: 11' ,
+          'telefono'                    => 'min: 6 | max: 11' ,
           'dom_cargo_id'                => 'required',
           'dom_unidad_id'               => 'required',
           'dom_carrera_id'              => 'required',
@@ -46,27 +46,22 @@ class ForminCreateRequest extends FormRequest
           'dom_actividad_id'            => 'required',
           'dom_ciudad_id'               => 'required',
           'duracion_act'                => 'max: 4',
-          'Incluido_en_plan_de_trabajo' => 'required | in:Si,No,Por Ingresar',
-          'inscripcion'                 => 'max:10',
-          'arancel'                     => 'max:10',
-          'pasajes'                     => 'max:10',
-          'viatico'                     => 'max:10',
-          'otros'                       => 'max:10',
-          'total'                       => 'max:10',
-          'currency_id'                 => 'required',
+          'ipt'                         => 'required | in:Si,No,Por Ingresar',
           'observaciones'               => 'max: 200',
         ];
     }
 
     public function messages(){
       return [
-        'name.required' => 'El :attribute es obligatorio.',
+        'nombre.required' => 'El :attribute es obligatorio.',
+        'nombre.min' => 'El :attribute debe tener más de 6 caracteres.',
+        'nombre.max' => 'El :attribute debe tener menos de 50 caracteres.',
         'rut.required' => 'El :attribute es obligatorio',
-        'rut.max' => 'El :attribute es demasiado largo',
+        'rut.max' => 'El :attribute ',
         'email.required' => 'El :attribute es obligatorio',
         'email.min' => 'El :attribute debe tener al menos 5 caracteres',
         'email.max' => 'El :attribute no debe tener más de 50 caracteres',
-        'email.email' => 'El :attribute debe ser un email',
+        'email.email' => 'El :attribute debe ser un email válido',
         'telefono.required' => 'El :attribute es obligatorio',
         'dom_cargo_id.required' => 'Selecciona un :attribute al docente',
       ];
@@ -74,7 +69,7 @@ class ForminCreateRequest extends FormRequest
 
     public function attributes(){
       return [
-        'name'                        => 'nombre del docente',
+        'nombre'                      => 'nombre del académico/colaborador',
         'dom_cargo_id'                => 'Cargo',
         'dom_unidad_id'               => 'Unidad académica',
         'dom_carrera_id'              => 'Carrera',
@@ -90,7 +85,6 @@ class ForminCreateRequest extends FormRequest
         'dom_actividad_id'            => 'Tipo de Actividad',
         'dom_ciudad_id'               => 'Ciudad',
         'duracion_act'                => 'Duración de la actividad',
-        'currency_id'                 => 'Divisa',
       ];
     }
 }

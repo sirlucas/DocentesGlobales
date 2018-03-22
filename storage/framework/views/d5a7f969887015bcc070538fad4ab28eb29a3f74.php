@@ -22,7 +22,7 @@
   <div class="row">
     <div class="col-md-12">
       <!-- Box opciones menú izq -->
-      <div class="col-sm-4">
+      <div class="col-sm-3">
         <div class="box box-primary">
           <div class="box-header with-border">
             <h4 class="box-title">Opciones - Options</h4>
@@ -39,9 +39,18 @@
 						</a>
 						<a href="#" class="btn btn-app">
 							<i class="fa fa-edit"></i>
-							<?php echo e(trans('adminlte_lang::message.editform')); ?>
-
+							<!--<?php echo e(trans('adminlte_lang::message.editform')); ?> -->
+							Edit
 						</a>
+						<a href="#" class="btn btn-app">
+							<i class="fa fa-recycle"></i>
+							Reutilizar
+						</a>
+						<a href="#" class="btn btn-app">
+							<i class="fa fa-file-pdf-o"></i>
+							Imprimir
+						</a>
+
           </div>
           <!-- /.box-body -->
         </div>
@@ -49,7 +58,7 @@
       <!-- /.box opciones menú -->
 
       <!-- Box historial der.-->
-      <div class="col-sm-8">
+      <div class="col-sm-9">
         <div class="box box-primary">
           <div class="box-header with-border">
             <h4 class="box-title">Últimos Formulaios - Latest forms</h4>
@@ -62,21 +71,24 @@
             <table id="last" class="table table-bordered table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
+                  <th>Fecha Ingreso</th>
                   <th>Destino</th>
-                  <th>Fecha ingreso</th>
-                  <th>Acciones</th>
+                  <th>Fecha Viaje</th>
+                  <th>Académico/Colaborador</th>
                 </tr>
               </thead>
 							<tbody>
 								<?php $__currentLoopData = $forms; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $form): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 								<tr>
-									<td><?php echo e(++$i); ?></td>
+									<td><?php echo e($form->created_at); ?></td>
 									<td><?php echo e($form->institucion_anf); ?></td>
 									<td><?php echo e($form->fecha_ida); ?></td>
+									<td><?php echo e($form->nombre); ?></td>
 									<td>
-										<a class="btn btn-info" href="<?php echo e(route('formin.show',$form->id)); ?>">Show</a>
-										<a class="btn btn-primary" href="<?php echo e(route('formin.edit',$form->id)); ?>">Edit</a>
+										<a class="btn btn-info btn-xs" href="<?php echo e(route('formin.edit',$form->id)); ?>"><i class="fa fa-file-pdf-o"></i></a>
+										<a class="btn btn-info btn-xs" href="<?php echo e(route('formin.edit',$form->id)); ?>"><i class="fa fa-edit"></i></a>
+										<a class="btn btn-info btn-xs" href="<?php echo e(route('formin.edit',$form->id)); ?>"><i class="fa fa-recycle"></i></a>
+
 									</td>
 								</tr>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -95,13 +107,6 @@
   </div>
 </div>
 
-
-<script type="text/javascript">
-$(document).ready(function() {
-
-});
-
-</script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('adminlte::layouts.app', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
