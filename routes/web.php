@@ -23,13 +23,14 @@ Route::group(['middleware' => 'auth'], function () {
     //Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
     #adminlte_routes
 
-    Route::get('formex',['name' => 'formex','uses' => 'FormulariosExController@index']);
-
-
+    Route::get('formin/ddca', 'PdfController@ddca');
+    Route::get('formin/fpv', 'PdfController@fpv');
+    Route::get('formin/iudd', 'PdfController@iudd');
+    Route::get('formin/drrhh', 'PdfController@drrhh');
 
     Route::get('formin/getCities','FormulariosInController@getCities');
     Route::get('formin/getCareer','FormulariosInController@getCarrer');
     Route::resource('formin','FormulariosInController');
 
 });
-Route::get('generatepdf','FormulariosInController@generatePDF');
+//Route::get('generatepdf','FormulariosInController@generatePDF');

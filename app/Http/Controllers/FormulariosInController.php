@@ -110,12 +110,11 @@ class FormulariosInController extends Controller
 
   }
 
-  public function edit($id){
-    $ficha = FormularioIn::where('id',$id)->with('cargo','unidad','carrera','sede','clasificacion','actividad','ciudad','divisa')->first();
+  public function a($id){
+    $ficha = FormularioIn::where('id',$id)->with('cargo','unidad','carrera','sede','clasificacion','actividad','ciudad')->first();
     print($ficha);
-    $data = ['title' => 'Welcome to HDTuto.com'];
 
-    $pdf = PDF::loadView('Form_internal.myPDF', ['formulario' => $ficha]);
+    $pdf = PDF::loadView('Form_internal.formsPDF.fpv', ['formulario' => $ficha]);
 
 
 return $pdf->download('form.pdf');
@@ -169,5 +168,30 @@ return $pdf->download('form.pdf');
           return response()->json($divisa);
         }
       }
+
+
+      public function edit($id)
+    {
+      $forms = FormularioIn::latest()->paginate(5);
+
+
+        $view =  \View::make('form_internal.index', compact('forms'))->render();
+        $pdf = PDF::loadView('form_internal.index', ['forms' => $forms]);
+        $pdf->loadHTML($view);
+        return $pdf->stream('form.pdf');
+        //return $pdf->download('form.pdf');
+      //    $pdf = PDF::loadView('Form_internal.formsPDF.fpv', ['formulario' => $ficha]);
+    }
+
+    public function getData()
+    {
+        $data =  [
+            'quantity'      => '1' ,
+            'description'   => 'some ramdom text',
+            'price'   => '500',
+            'total'     => '500'
+        ];
+        return $data;
+    }
 
 }

@@ -54,8 +54,7 @@
 									<td>
 									</td>
 									<td>
-										<a id="imp" class="btn bg-orange btn-xs"	data-toggle="modal" data-target="#popup"><i class="glyphicon glyphicon-print"></i></a>
-
+										<a id="imp" class="btn bg-orange btn-xs"	data-toggle="tooltip" data-placement="left" title="Imprimir Formularios"><i class="glyphicon glyphicon-print"></i></a>
 									<!--	<a id="imp" class="btn bg-orange btn-xs" data-toggle="tooltip" data-placement="left" title="Imprimir Formularios"><i class="glyphicon glyphicon-print"></i></a>-->
 										<a class="btn btn-primary btn-xs" href="{{ route('formin.edit',$form->id) }}" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
 										<a class="btn btn-success btn-xs" href="{{ route('formin.edit',$form->id) }}" data-toggle="tooltip" data-placement="top" title="Reciclar datos"><i class="fa fa-recycle"></i></a>
@@ -83,25 +82,28 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Tipos de Formularios</h4>
+        <h5 class="modal-title">Tipos de Formularios</h5>
       </div>
       <div class="modal-body">
-				<a class="btn btn-app">
-			   <i class="fa fa-file-pdf-o"></i>DDCA
-			  </a>
-				<a class="btn btn-app">
-			    <i class="fa fa-file-pdf-o"></i>Dirección de Recursos Humanos.
-			  </a>
-				<a class="btn btn-app">
-			    <i class="fa fa-file-pdf-o"></i>Formulario Pago Viaticos (FPV)
-			  </a>
-				<a class="btn btn-app">
-			    <i class="fa fa-file-pdf-o"></i>Formmulario --
-			  </a>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+
+					<a class="btn btn-app">
+					 <i class="fa fa-file-pdf-o"></i>DDCA
+					</a>
+
+					<a class="btn btn-app">
+						<i class="fa fa-file-pdf-o"></i>DRRHH
+					</a>
+
+
+					<a class="btn btn-app">
+				    <i class="fa fa-file-pdf-o"></i>FPV
+				  </a>
+
+					<a class="btn btn-app">
+				    <i class="fa fa-file-pdf-o"></i>Ingenieria
+				  </a>
+
       </div>
     </div>
 

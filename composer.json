@@ -13,7 +13,11 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "malahierba-lab/chile-rut": "5.1.*",
-        "yajra/laravel-datatables-oracle": "^8.4"
+        "yajra/laravel-datatables-oracle": "^8.4",
+        "h4cc/wkhtmltopdf-amd64": "0.12.x",
+        "h4cc/wkhtmltoimage-amd64": "0.12.x",
+        "barryvdh/laravel-snappy": "0.2.x"
+
     },
     "require-dev": {
         "filp/whoops": "~2.0",
