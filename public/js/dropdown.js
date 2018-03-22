@@ -305,7 +305,7 @@ $(document).ready(function(){
     bodyTag: "section",
     transitionEffect: "slideLeft",
     autoFocus: true,
-    enableCancelButton: true,
+    enableCancelButton: false,
     labels: {
      cancel: "Cancelar",
      current: "etapa actual:",
@@ -369,6 +369,7 @@ $(document).ready(function(){
     //$('.phone').inputmask('(+99) 9999-9999', {numericInput: true });    //123456  =>  € ___.__1.234,56
 
     $('div.alert').delay(3000).fadeOut(350);
+
 
 // select anidado para ciuades y paises
   $(document).on('change','#countries',function(){
