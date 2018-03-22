@@ -121,6 +121,8 @@ $(document).ready(function(){
         },
         postitulo:{
           required: true,
+          maxlength: 50,
+          minlength: 5,
         },
         inst_anf:{
           required: true,
@@ -156,6 +158,10 @@ $(document).ready(function(){
         clasis:{
           required: true,
         },
+        inst_descripcion:{
+          required: false,
+          maxlength: 150,
+        },
         proposito:{
           required: false,
           maxlength: 200,
@@ -176,7 +182,12 @@ $(document).ready(function(){
           minlength: 6,
           digits:true,
         },
-
+        observaciones:{
+          maxlength: 200,
+        },
+        colaboracion:{
+          maxlength: 200,
+        },
     },
     messages:{
         nombre:{
@@ -210,6 +221,8 @@ $(document).ready(function(){
         },
         postitulo:{
           required: "Ingrese el nombre de su postitulo",
+          maxlength: "Ingrese no más de 50 caracteres",
+          minlength: "Ingrese mínimo 5 caracteres",
         },
         inst_anf:{
           required: "Ingrese el Nombre de la Institución anfitriona",
@@ -259,8 +272,12 @@ $(document).ready(function(){
           minlength: "Ingrese minimo 6 digitos",
           digits: "Ingrese sólo números",
         },
-
-
+        observaciones:{
+          maxlength: "El nombe debe tener menos de 50 caracteres",
+        },
+        colaboracion:{
+          maxlength: "El nombe debe tener menos de 50 caracteres",
+        },
     },
     errorElement: "em",
     errorPlacement: function ( error, element ) {
@@ -288,6 +305,7 @@ $(document).ready(function(){
     bodyTag: "section",
     transitionEffect: "slideLeft",
     autoFocus: true,
+    enableCancelButton: true,
     labels: {
      cancel: "Cancelar",
      current: "etapa actual:",
@@ -297,6 +315,7 @@ $(document).ready(function(){
      previous: "Atras",
      loading: "Cargando..."
     },
+    onCanceled: function (event) { },
     onStepChanged: function(e, currentIndex, priorIndex) {
       // You don't need to care about it
       // It is for the specific demo
@@ -324,15 +343,14 @@ $(document).ready(function(){
     // Triggered when clicking the Finish button
     onFinishing: function(e, currentIndex) {
       var form = $("#form1");
+      form.submit();
+      return true
     },
     // Triggered whe clicking the Finish button
     onFinished: function(e, currentIndex) {
-      var form = $("#form1");
-      // Submit form input
-      form.submit();
-      return true
     }
   });//fin steps
+
 
   $('.select2').select2().on('change', function() {
   $(this).trigger('blur');});
@@ -340,17 +358,17 @@ $(document).ready(function(){
   $(".datepicker").datepicker({
           changeMonth: true,
           changeYear: true,
-          yearRange: '2018:2025',
-          dateFormat: 'dd/mm/yy',
-          lenguage: "es",
+          yearRange: "2018:2025",
+          format: "yyyy-mm-dd",
           minDate: 0,
           defaultDate: null,
           autoclose: true,
       }).on('change', function() {
           $(this).valid();
       });
+    //$('.phone').inputmask('(+99) 9999-9999', {numericInput: true });    //123456  =>  € ___.__1.234,56
 
-
+    $('div.alert').delay(3000).fadeOut(350);
 
 // select anidado para ciuades y paises
   $(document).on('change','#countries',function(){

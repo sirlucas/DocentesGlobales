@@ -52,10 +52,11 @@
 									<td>{{ $form->fecha_ida }}</td>
 									<td>{{ $form->nombre }}</td>
 									<td>
-										<a class="btn btn-info btn-xs" href="{{ route('formin.edit',$form->id) }}"><i class="fa fa-file-pdf-o"></i></a>
-										<a class="btn btn-info btn-xs" href="{{ route('formin.edit',$form->id) }}"><i class="fa fa-edit"></i></a>
-										<a class="btn btn-info btn-xs" href="{{ route('formin.edit',$form->id) }}"><i class="fa fa-recycle"></i></a>
-
+									</td>
+									<td>
+										<a class="btn bg-orange btn-xs"><i class="fa fa-file-pdf-o"></i></a>
+										<a class="btn btn-primary btn-xs" href="{{ route('formin.edit',$form->id) }}"><i class="fa fa-edit"></i></a>
+										<a class="btn btn-success btn-xs" href="{{ route('formin.edit',$form->id) }}"><i class="fa fa-recycle"></i></a>
 									</td>
 								</tr>
 							@endforeach

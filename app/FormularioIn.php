@@ -13,7 +13,8 @@ class FormularioIn extends Model
       'dom_sede_id','institucion_anf','inst_descripcion','website',
       'contacto_anf','cont_cargo','cont_email','cont_fono','fecha_ida',
       'fecha_retorno','dom_clasificacion_id','proposito','dom_actividad_id',
-      'dom_ciudad_id','duracion_act','ipt','observaciones','plan_estudio'
+      'dom_ciudad_id','duracion_act','ipt','observaciones','plan_estudio','colaboracion',
+      'postitulo'
   ];
 
   public function users(){

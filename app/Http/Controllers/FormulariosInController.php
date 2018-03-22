@@ -64,7 +64,7 @@ class FormulariosInController extends Controller
                                     ->with('cgestion',$cgestiones);
   }
 
-  public function store(ForminCreateRequest $request){
+  public function store(Request $request){
 
 
 
@@ -85,6 +85,7 @@ class FormulariosInController extends Controller
        'dom_sede_id' => $request->get('sede'),
        'dom_cargo_id'=> $request->get('cargo'),
        'dom_carrera_id' => $request->get('carreras'),
+       'postitulo'=> $request->get('postitulo'),
        'institucion_anf' => $request->get('inst_anf'),
        'website' => $request->get('website'),
        'dom_ciudad_id' => $request->get('cities'),
@@ -92,7 +93,7 @@ class FormulariosInController extends Controller
        'fecha_ida'=> $request->get('fechaida'),
        'fecha_retorno'=> $request->get('fecharetorno'),
        'dom_actividad_id'=> $request->get('actividad'),
-       'Incluido_en_plan_de_trabajo' => $request->get('plantrabajo'),
+       'ipt' => $request->get('plantrabajo'),
        'dom_clasificacion_id'=> $request->get('clasis'),
        'proposito' => $request->get('proposito'),
        'contacto_anf'=> $request->get('contacto_anf'),

@@ -85,7 +85,7 @@
                   <br>
                   (Número telefónico)
                 </label>
-                <input name=telefono class="form-control" data-inputmask="'mask': ['+99-999999999']" data-mask="" type="phone">
+                <input name=telefono class="form-control phone" type="text">
               </div>
 
               <div class="form-group">
@@ -403,7 +403,7 @@
                         </div>
                       </td>
                       <td>
-                        {!!Form::select('cgestion', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestionm', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                       </td>
                     </tr>
                     <tr>
@@ -417,7 +417,7 @@
                         </div>
                       </td>
                       <td>
-                        {!!Form::select('cgestion', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestiona', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                       </td>
                     </tr>
                     <tr>
@@ -431,7 +431,7 @@
                         </div>
                       </td>
                       <td>
-                        {!!Form::select('cgestion', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestionp', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                       </td>
                     </tr>
                     <tr>
@@ -445,7 +445,7 @@
                         </div>
                       </td>
                       <td>
-                        {!!Form::select('cgestion', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestionv', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                       </td>
                     </tr>
                     <tr>
@@ -459,7 +459,7 @@
             						</div>
                       </td>
                       <td>
-                        {!!Form::select('cgestion', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestiono', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                       </td>
                     </tr>
                     <tr class="info">

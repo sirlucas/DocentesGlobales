@@ -7,11 +7,13 @@
 
 <script src="{{ asset('/js/dropdown.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/plugins/select2.min.js')}}" type="text/javascript"></script>
-<script src="{{ asset('/plugins/bootstrap-datepicker.es.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/plugins/bootstrap-datepicker.js')}}" type="text/javascript"></script>
 <script src="{{ asset('/plugins/jquery.steps.js')}}" type="text/javascript"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/additional-methods.js"></script>
+<script src="{{ asset('/plugins/jquery.inputmask.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/plugins/jquery.inputmask.phone.extensions.js')}}" type="text/javascript"></script>
+<script src="{{ asset('/plugins/jquery.inputmask.numeric.extensions.js')}}" type="text/javascript"></script>
 
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.

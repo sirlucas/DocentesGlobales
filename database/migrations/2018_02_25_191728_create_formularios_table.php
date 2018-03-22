@@ -24,6 +24,8 @@ class CreateFormulariosTable extends Migration
             $table->integer('dom_unidad_id')->unsigned();
             $table->integer('dom_carrera_id')->unsigned();
             $table->integer('dom_sede_id')->unsigned();// sede UDD correspondiente
+            $table->string('postitulo',50)->nullable();// para planes de estudios (magister, diplomados, especialidad o postitulo)
+
             // datos institucion anfitriona
             $table->string('institucion_anf',100);
             $table->string('inst_descripcion',150)->nullable();
@@ -46,7 +48,6 @@ class CreateFormulariosTable extends Migration
             // otros campos
             $table->string('observaciones',200)->nullable();
             $table->string('colaboracion',200)->nullable();//colaboraiciones U. anfitriona con UDD
-            $table->string('plane_estudio',50)->nullable();// para planes de estudios (magister, diplomados, especialidad o postitulo)
             $table->timestamps();
 
             $table->foreign('dom_cargo_id')->references('id')->on('dom_cargos')->onDelete('no action');
