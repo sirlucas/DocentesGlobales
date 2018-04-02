@@ -34,6 +34,7 @@
     30 => 'App\\Providers\\RouteServiceProvider',
     31 => 'Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider',
     32 => 'Collective\\Html\\HtmlServiceProvider',
+    33 => 'Barryvdh\\DomPDF\\ServiceProvider',
   ),
   'eager' => 
   array (
@@ -55,6 +56,7 @@
     15 => 'App\\Providers\\EventServiceProvider',
     16 => 'App\\Providers\\RouteServiceProvider',
     17 => 'Acacha\\AdminLTETemplateLaravel\\Providers\\AdminLTETemplateServiceProvider',
+    18 => 'Barryvdh\\DomPDF\\ServiceProvider',
   ),
   'deferred' => 
   array (

@@ -60,6 +60,8 @@
                   <input id="rut" type="text" class="form-control" name="rut"  required placeholder="11222333-1">
               </div>
 
+
+
               <div class="form-group">
                 <label for="nombre" class="control-label">
                   Name of Academic UDD
@@ -178,7 +180,7 @@
                 <input id='website' type="text" class="form-control" name="website" placeholder="www.example.cl">
               </div>
 
-              <div class="form-group">
+              <div class="form-group col-sm-6">
                 <label for="pais" class="control-label">
                   Country
                   <br>
@@ -188,7 +190,7 @@
                   {!!Form::select('pais', $countries->pluck('pais','id'), null,['placeholder'=>'Selecciona un País','class' => 'form-control  select2' ,'required', 'id'=>'countries'])!!}
               </div>
 
-              <div class="form-group">
+              <div class="form-group col-sm-6">
                 <label for="cities" class="control-label">
                   City or State
                   <br>
@@ -206,6 +208,20 @@
                 <textarea id="comentarios" class="form-control" rows="2" name="inst_descripcion"></textarea>
               </div>
 
+              <div class="form-group">
+                <label class="control-label">
+                  Date of visit <br>
+                  (Fecha de visita)
+                  <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
+                </label>
+                <div class="input-group date">
+                  <div class="input-group-addon">
+                    <i class="fa fa-calendar"></i>
+                  </div>
+                  <input class="form-control" id="ida_retorno" type="text" name="ida_retorno" required>
+                </div>
+                <!-- /.input group -->
+              </div>
 
             </div>
             <!-- panel izquierdo -->
@@ -213,6 +229,7 @@
             <!-- panel derecho -->
             <div class="col-md-6">
 
+              <!--
               <div class="form-group col-sm-6">
     						<label class="control-label">Date of visit <br>(Fecha de visita)
                 <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
@@ -237,7 +254,16 @@
     							<input id="datepicker_retorno" type="text" class="form-control  datepicker pull-right" required name="fecharetorno">
     						</div>
     					</div>
-
+            -->
+            <div class="form-group">
+              <label for="actividad_nombre" class="control-label">
+                Name of Activity
+                <br>
+                (Nombre de la actividad)
+              </label>
+              <input name="actividad_nombre" class="form-control"  type="text">
+            </div>
+            
               <div class="form-group">
                 <label for="actividad" class="control-label">
                   Type of activity to perform during your visit

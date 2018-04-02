@@ -1,7 +1,9 @@
-function hola(campo){
-  console.log(campo);
-
+function openModal(id){
+  console.log(id);
   $('#popup').modal('show')
+
+  $('#popup').find('.modal-body btn-app').attr('href', "{{ route('formin.edit',"+id+") }}");
+
   return true;
 }
 function validaRut(campo){
@@ -43,23 +45,7 @@ function validaRut(campo){
 }
 
 
-function generatepdf(e){
-  $.ajax({
-        url   :  '/generatepdf',
-        type  : 'get',
-        data  : e,
 
-        success : function(data) {
-
-          console.log("success"); // another sanity check
-        },
-
-        // handle a non-successful response
-        error : function(request, type, errorThrown) {
-          console.log(error);
-        }
-    });
-}
 
 function adjustIframeHeight() {
       var $body   = $('body'),
@@ -149,11 +135,19 @@ $(document).ready(function(){
         inst_descripcion:{
           maxlength: 200,
         },
+        ida_retorno: {
+          required: true,
+        },
         fechaida:{
           required: true,
         },
         fecharetorno:{
           required:true
+        },
+        actividad_nombre:{
+          required: true,
+          maxlength: 100,
+          minlength: 5,
         },
         actividad:{
           required: true,
@@ -248,11 +242,19 @@ $(document).ready(function(){
         inst_descripcion:{
           maxlength: "Descripción no debe tener más de 150 caracteres"
         },
+        ida_retorno:{
+          required: "Campo Obligatorio"
+        },
         fechaida:{
           required: "Fecha es obligatorio"
         },
         fecharetorno:{
           required: "Fecha es obligatorio"
+        },
+        actividad_nombre:{
+          required: "Nombre de actividad es obligatorio",
+          maxlength: "No debe tener más de 100 caracteres",
+          minlength: "Debe tener al menos 5 caracteres",
         },
         actividad:{
           required: "seleccione una opción",
@@ -361,6 +363,7 @@ $(document).ready(function(){
   $('.select2').select2().on('change', function() {
   $(this).trigger('blur');});
 
+  /*
   $(".datepicker").datepicker({
           changeMonth: true,
           changeYear: true,
@@ -370,6 +373,21 @@ $(document).ready(function(){
           defaultDate: null,
           autoclose: true,
       }).on('change', function() {
+          $(this).valid();
+      });
+*/
+
+      $('input[name="ida_retorno"]').daterangepicker({
+        "autoApply": true,
+        "opens": "right",
+        "drops": "up",
+        "showCustomRangeLabel": false,
+        "locale": {
+        "format": "YYYY-MM-DD",
+        "separator": " / ",
+      },
+      }).on('change', function() {
+          console.log(  $('input[name="ida_retorno"]').val());
           $(this).valid();
       });
     //$('.phone').inputmask('(+99) 9999-9999', {numericInput: true });    //123456  =>  € ___.__1.234,56
@@ -418,6 +436,41 @@ $(document).ready(function(){
     }
    });
 
-
+   $(function () {
+       $('#last').DataTable({
+         'paging'       : true,
+         'lengthChange' : false,
+         'searching'    : true,
+         'ordering'     : true,
+         'info'         : false,
+         'autoWidth'    : false,
+         'lengthMenu'   : [[5, -1], [5, "All"]],
+         'order'        : [[ 0, 'dsc' ]],
+ 				language: {
+ 				    "sProcessing":     "Procesando...",
+ 				    "sLengthMenu":     "Mostrar _MENU_ registros",
+ 				    "sZeroRecords":    "No se encontraron resultados",
+ 				    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+ 				    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+ 				    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+ 				    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+ 				    "sInfoPostFix":    "",
+ 				    "sSearch":         "Buscar:",
+ 				    "sUrl":            "",
+ 				    "sInfoThousands":  ",",
+ 				    "sLoadingRecords": "Cargando...",
+ 				    "oPaginate": {
+ 				        "sFirst":    "Primero",
+ 				        "sLast":     "Último",
+ 				        "sNext":     "Siguiente",
+ 				        "sPrevious": "Anterior"
+ 				    },
+ 				    "oAria": {
+ 				        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+ 				        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+ 				    }
+ 				}
+       })
+     })
 
 });//fin doc ready

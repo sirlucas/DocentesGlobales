@@ -28,51 +28,47 @@ class PdfController extends Controller
 {
 
 //Formulario para perfeccionamiento academico (DDCA)
-  public function ddca($id){
-    $data = $this->getData();
-    $date = date('Y-m-d');
-    $invoice = "2222";
-    $view =  \View::make('Form_internal.formsPDF.fpv', compact('data', 'date', 'invoice'))->render();
-    $pdf = \App::make('dompdf.wrapper');
-    $pdf->loadHTML($view);
-    return $pdf->stream('invoice');
-    $pdf = PDF::loadView('Form_internal.formsPDF.fpv', ['formulario' => $ficha]);
+  public function ddca(Request $request){
+    $id = $request->getQueryString();
+    $form = FormularioIn::find($id);
+    $created_at = explode(' ', $form->created_at );
+    $date = date('d-m-Y');
+    $doc_id = str_pad($id, 6,'0', STR_PAD_LEFT);
+    $pdf = PDF::loadView('Form_internal.formsPDF.ddca', ['created_at'=>$created_at,'formulario' => $form, 'date' => $date, 'doc_id' => $doc_id]);
+    return $pdf->stream('ddcaForm'.$doc_id.'.pdf');
   }
 
 // formulario para Pago de Viaticos (Vicerrectoria académica)
-  public function fpv($id){
-    $data = $this->getData();
-    $date = date('Y-m-d');
-    $invoice = "2222";
-    $view =  \View::make('Form_internal.formsPDF.fpv', compact('data', 'date', 'invoice'))->render();
-    $pdf = \App::make('dompdf.wrapper');
-    $pdf->loadHTML($view);
-    return $pdf->stream('invoice');
-    $pdf = PDF::loadView('Form_internal.formsPDF.fpv', ['formulario' => $ficha]);
+  public function fpv(Request $request){
+    $id = $request->getQueryString();
+    $form = FormularioIn::find($id);
+    $created_at = explode(' ', $form->created_at );
+    $date = date('d-m-Y');
+    $doc_id = str_pad($id, 6,'0', STR_PAD_LEFT);
+    $pdf = PDF::loadView('Form_internal.formsPDF.fpv', ['created_at'=>$created_at,'formulario' => $form, 'date' => $date, 'doc_id' => $doc_id]);
+    return $pdf->stream('fpvForm'.$doc_id.'.pdf');
   }
 
 //formulario par autorizacion de viajes academicos INgenieria UDD
-  public function facultad($id){
-    $data = $this->getData();
-    $date = date('Y-m-d');
-    $invoice = "2222";
-    $view =  \View::make('Form_internal.formsPDF.fpv', compact('data', 'date', 'invoice'))->render();
-    $pdf = \App::make('dompdf.wrapper');
-    $pdf->loadHTML($view);
-    return $pdf->stream('invoice');
-    $pdf = PDF::loadView('Form_internal.formsPDF.fpv', ['formulario' => $ficha]);
+  public function facultad(Request $request){
+    $id = $request->getQueryString();
+    $form = FormularioIn::find($id);
+    $created_at = explode(' ', $form->created_at );
+    $date = date('d-m-Y');
+    $doc_id = str_pad($id, 6,'0', STR_PAD_LEFT);
+    $pdf = PDF::loadView('Form_internal.formsPDF.facultad', ['created_at'=>$created_at,'formulario' => $form, 'date' => $date, 'doc_id' => $doc_id]);
+    return $pdf->stream('facultadForm'.$doc_id.'.pdf');
   }
 
 //formulario "Permiso Programas para viajes de Estudio" (Direccion de Recursos Humanos)
-  public function drrhh($id){
-    $data = $this->getData();
-    $date = date('Y-m-d');
-    $invoice = "2222";
-    $view =  \View::make('Form_internal.formsPDF.fpv', compact('data', 'date', 'invoice'))->render();
-    $pdf = \App::make('dompdf.wrapper');
-    $pdf->loadHTML($view);
-    return $pdf->stream('invoice');
-    $pdf = PDF::loadView('Form_internal.formsPDF.fpv', ['formulario' => $ficha]);
+  public function drrhh(Request $request){
+    $id = $request->getQueryString();
+    $form = FormularioIn::find($id);
+    $created_at = explode(' ', $form->created_at );
+    $date = date('d-m-Y');
+    $doc_id = str_pad($id, 6,'0', STR_PAD_LEFT);
+    $pdf = PDF::loadView('Form_internal.formsPDF.rrhh', ['created_at'=>$created_at,'formulario' => $form, 'date' => $date, 'doc_id' => $doc_id]);
+    return $pdf->stream('rrhhForm'.$doc_id.'.pdf');
   }
 
 

@@ -80,6 +80,12 @@
 /* Custom styles
 /* -------------------------------------------------------------------------- */
 
+/* datatables*/
+
+div.dataTables_wrapper div.dataTables_filter {
+  padding: 0px 15px 0 0 !important;
+}
+
 .content{
   padding-top: 0;
 }

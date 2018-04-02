@@ -14,8 +14,29 @@ class FormularioIn extends Model
       'contacto_anf','cont_cargo','cont_email','cont_fono','fecha_ida',
       'fecha_retorno','dom_clasificacion_id','proposito','dom_actividad_id',
       'dom_ciudad_id','duracion_act','ipt','observaciones','plan_estudio','colaboracion',
-      'postitulo'
+      'postitulo','actividad_nombre',
   ];
+
+// mutators and accesors
+
+  public function getCreatedAtAttribute($date){
+      return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d-m-Y');
+  }
+
+  public function getUpdatedAtAttribute($date){
+      return \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('d-m-Y');
+  }
+
+  public function getFechaRetornoAttribute($date){
+          return \Carbon\Carbon::createFromFormat('Y-m-d', $date)->format('d-m-Y');
+  }
+
+  public function getFechaIdaAttribute($date){
+          return \Carbon\Carbon::createFromFormat('Y-m-d', $date)->format('d-m-Y');
+  }
+
+
+// ./ mutators and accesors
 
   public function users(){
     return $this->belongsToMany('\App\User','user_has_forms')

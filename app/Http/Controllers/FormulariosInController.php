@@ -34,10 +34,9 @@ class FormulariosInController extends Controller
   /* @param  StoreBlogPostRequest  $request */
   public function index()
   {
-    $forms = FormularioIn::latest()->paginate(5);
+    $forms = FormularioIn::All();
 
-      return view('form_internal.index',compact('forms'))
-        ->with('i', (request()->input('page', 1) - 1) * 5);
+      return view('form_internal.index',compact('forms'));
   }
 
   public function create()
@@ -66,8 +65,6 @@ class FormulariosInController extends Controller
 
   public function store(Request $request){
 
-
-
   /*  'currency_id'=> $request->get('currency'),
     'inscripcion'=> $request->get('matricula'),
     'arancel'=> $request->get('arancel'),
@@ -75,6 +72,11 @@ class FormulariosInController extends Controller
     'viatico'=> $request->get('viaticos'),
     'otros'=> $request->get('otros'),
     'total'=> $request->get('total'),*/
+
+
+    $dates = explode(' / ', $request->get('ida_retorno'));
+    //dd(date_format($dates[0], 'Y-m-d'));
+  //  dd($dates);
 
     $formularioin= FormularioIn::create([
        'rut'  => $request->get('rut'),
@@ -90,9 +92,10 @@ class FormulariosInController extends Controller
        'website' => $request->get('website'),
        'dom_ciudad_id' => $request->get('cities'),
        'inst_descripcion'=> $request->get('inst_descripcion'),
-       'fecha_ida'=> $request->get('fechaida'),
-       'fecha_retorno'=> $request->get('fecharetorno'),
+       'fecha_ida'=> $dates[0],
+       'fecha_retorno'=> $dates[1],
        'dom_actividad_id'=> $request->get('actividad'),
+       'actividad_nombre'=> $request->get('actividad_nombre'),
        'ipt' => $request->get('plantrabajo'),
        'dom_clasificacion_id'=> $request->get('clasis'),
        'proposito' => $request->get('proposito'),
@@ -110,28 +113,15 @@ class FormulariosInController extends Controller
 
   }
 
-  public function a($id){
-    $ficha = FormularioIn::where('id',$id)->with('cargo','unidad','carrera','sede','clasificacion','actividad','ciudad')->first();
-    print($ficha);
-
-    $pdf = PDF::loadView('Form_internal.formsPDF.fpv', ['formulario' => $ficha]);
-
-
-return $pdf->download('form.pdf');
-
-  }
 
   public function show($id){
 
   }
 
-  public function generatePDF(Request $request){
-    if($request->ajax()){
-
-      //...
-    }
-
+  public function edit($id){
   }
+
+
   public function reusar($id){
 
   }
@@ -168,30 +158,5 @@ return $pdf->download('form.pdf');
           return response()->json($divisa);
         }
       }
-
-
-      public function edit($id)
-    {
-      $forms = FormularioIn::latest()->paginate(5);
-
-
-        $view =  \View::make('form_internal.index', compact('forms'))->render();
-        $pdf = PDF::loadView('form_internal.index', ['forms' => $forms]);
-        $pdf->loadHTML($view);
-        return $pdf->stream('form.pdf');
-        //return $pdf->download('form.pdf');
-      //    $pdf = PDF::loadView('Form_internal.formsPDF.fpv', ['formulario' => $ficha]);
-    }
-
-    public function getData()
-    {
-        $data =  [
-            'quantity'      => '1' ,
-            'description'   => 'some ramdom text',
-            'price'   => '500',
-            'total'     => '500'
-        ];
-        return $data;
-    }
 
 }

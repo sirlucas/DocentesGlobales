@@ -16,7 +16,7 @@ class CreateFormulariosTable extends Migration
         Schema::create('formularios', function (Blueprint $table) {
             $table->increments('id');
             // datos personales
-            $table->string('nombre',100);
+            $table->string('nombre',50);
             $table->string('rut',10);
             $table->string('email',50);
             $table->integer('telefono')->nullable();
@@ -33,7 +33,7 @@ class CreateFormulariosTable extends Migration
             $table->integer('dom_ciudad_id')->unsigned();
             $table->string('website',100)->nullable();
             // datos de contacto anfitrion
-            $table->string('contacto_anf',100)->nullable();
+            $table->string('contacto_anf',50)->nullable();
             $table->string('cont_cargo',50)->nullable();
             $table->string('cont_email',50)->nullable();
             $table->integer('cont_fono')->nullable();
@@ -43,6 +43,7 @@ class CreateFormulariosTable extends Migration
             $table->integer('dom_clasificacion_id')->unsigned();
             $table->string('proposito',200)->nullable(); //proposito de la visita
             //formulario DDCA
+            $table->string('actividad_nombre',100)->nullable();
             $table->integer('duracion_act')->nullable();//duracion de la actividad en horas (si es menos de 100horas)
             $table->enum('ipt', ['Si','No','Por Ingresar']); //incluido en plan de trabajo?
             // otros campos
