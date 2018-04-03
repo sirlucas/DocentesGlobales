@@ -103,6 +103,16 @@ resize: none;
   width: 100% !important;
 }
 
+/* dropdown a la izquierda */
+
+#pdfs .dropdown-menu{
+  position: absolute;
+  right: 100%;
+  left: auto;
+  top: -100%;
+  bottom: auto;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Modal centrado verticalmente
 /* -------------------------------------------------------------------------- */

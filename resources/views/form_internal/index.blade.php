@@ -52,13 +52,23 @@
 									<td>{{ $form->fecha_ida }} <br> {{ $form->fecha_retorno }}</td>
 									<td>{{ $form->nombre }}</td>
 									<td>
-										adsfasfas
 									</td>
 									<td>
-										<a id="imp" class="btn bg-orange btn-xs" role="button" onclick="return openModal({{$form->id}})"	data-toggle="tooltip" data-placement="left" title="Imprimir Formularios"><i class="glyphicon glyphicon-print"></i></a>
-										<a class="btn btn-primary btn-xs" href="" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
-										<a class="btn btn-success btn-xs" href="{{ route('formin/drrhh', $form->id) }}" data-toggle="tooltip" data-placement="top" title="Reciclar datos"><i class="fa fa-recycle"></i></a>
-									</td>
+										<div id="pdfs" class="input-group-btn">
+                  		<a type="button" class="btn bg-orange btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="glyphicon glyphicon-print"></i></a>
+                  		<ul class="dropdown-menu">
+												<li> <a>Seleccione Formularios</a> </li>
+												<li class="divider"></li>
+                    		<li><a href="{{route('formin/ddca', $form->id)}}" target="_blank"><i class="fa fa-file-pdf-o"></i> DDCA</a></li>
+                    		<li><a href="{{route('formin/drrhh', $form->id)}}" target="_blank"><i class="fa fa-file-pdf-o"></i> RRHH</a></li>
+                    		<li><a href="{{route('formin/facultad', $form->id)}}" target="_blank"><i class="fa fa-file-pdf-o"></i> Facultad</a></li>
+												<li><a href="{{route('formin/fpv', $form->id)}}" target="_blank"><i class="fa fa-file-pdf-o"></i> FPV</a></li>
+                  		</ul>
+											<a class="btn btn-primary btn-xs" href="" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+											<a class="btn btn-success btn-xs" href="{{ route('formin/drrhh', $form->id) }}" data-toggle="tooltip" data-placement="top" title="Reciclar datos"><i class="fa fa-recycle"></i></a>
+
+                		</div>
+										</td>
 								</tr>
 							@endforeach
 							</tbody>
@@ -69,40 +79,6 @@
       <!-- /.box historial der. -->
 
     </div>
-  </div>
-</div>
-
-
-<div id="popup" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Tipos de Formularios</h5>
-      </div>
-      <div class="modal-body">
-
-					<a class="btn btn-app">
-					 <i class="fa fa-file-pdf-o"></i>DDCA
-					</a>
-
-					<a class="btn btn-app">
-						<i class="fa fa-file-pdf-o"></i>DRRHH
-					</a>
-
-
-					<a class="btn btn-app">
-				    <i class="fa fa-file-pdf-o"></i>FPV
-				  </a>
-
-					<a class="btn btn-app">
-				    <i class="fa fa-file-pdf-o"></i>Ingenieria
-				  </a>
-
-      </div>
-    </div>
-
   </div>
 </div>
 
