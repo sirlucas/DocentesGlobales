@@ -16,6 +16,7 @@ class CreateCGestionsTable extends Migration
         Schema::create('c_gestions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('cgestion',70);
+            $table->string('responsable',70);
             $table->integer('codigo')->nullable();
             $table->timestamps();
         });

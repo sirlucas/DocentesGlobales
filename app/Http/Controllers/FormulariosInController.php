@@ -65,18 +65,15 @@ class FormulariosInController extends Controller
 
   public function store(Request $request){
 
-  /*  'currency_id'=> $request->get('currency'),
-    'inscripcion'=> $request->get('matricula'),
-    'arancel'=> $request->get('arancel'),
-    'pasajes'=> $request->get('pasajes'),
-    'viatico'=> $request->get('viaticos'),
-    'otros'=> $request->get('otros'),
-    'total'=> $request->get('total'),*/
+
 
 
     $dates = explode(' / ', $request->get('ida_retorno'));
     //dd(date_format($dates[0], 'Y-m-d'));
   //  dd($dates);
+
+
+
 
     $formularioin= FormularioIn::create([
        'rut'  => $request->get('rut'),
@@ -106,6 +103,40 @@ class FormulariosInController extends Controller
        'colaboracion' => $request->get('colaboracion'),
        'observaciones'=> $request->get('observaciones'),
     ]);
+
+
+
+    if ($request->get('matricula')) {
+      //account_id = 1 corresponde a matriculas
+      $formularioin->cgestion()->attach($request->get('cgestionm'),['currency_id'=>$request->get('currency'),'account_id'=>'1', 'monto'=>$request->get('matricula')]);
+    }
+    if ($request->get('arancel')) {
+      $formularioin->cgestion()->attach($request->get('cgestiona'),['currency_id'=>$request->get('currency'), 'account_id'=>'2', 'monto'=>$request->get('arancel')]);
+
+    }
+    if ($request->get('pasajes')) {
+      $formularioin->cgestion()->attach($request->get('cgestionp'),['currency_id'=>$request->get('currency'), 'account_id'=>'3', 'monto'=>$request->get('pasajes')]);
+
+    }
+    if ($request->get('viaticos')) {
+      $formularioin->cgestion()->attach($request->get('cgestionv'),['currency_id'=>$request->get('currency'), 'account_id'=>'4', 'monto'=>$request->get('viaticos')]);
+
+    }
+    if ($request->get('otros')) {
+      $formularioin->cgestion()->attach($request->get('cgestiono'),['currency_id'=>$request->get('currency'), 'account_id'=>'5', 'monto'=>$request->get('otros')]);
+
+    }
+    if ($request->get('total')) {
+      // c_gestion_id = 1 => "NO APLICA"
+      $formularioin->cgestion()->attach('1',['currency_id'=>$request->get('currency'), 'account_id'=>'6','monto'=>$request->get('total')]);
+
+    }
+
+
+
+
+
+
 
 
     return redirect()->route('formin.index')

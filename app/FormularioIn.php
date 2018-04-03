@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-//Modelo para formularios "International visit request - Internal (Personal de la UDD)"
+//Modelo para formularios "International visit request - Internal (academicos UDD)"
 class FormularioIn extends Model
 {
   protected $table = 'formularios';
@@ -78,18 +78,18 @@ class FormularioIn extends Model
   // para outlays
 
   public function cgestion(){
-        return $this->belongsToMany('\App\CGestion','outlays')
+        return $this->belongsToMany('App\CGestion','outlays')
             ->withPivot('currency_id','account_id','monto');
     }
 
   public function currency(){
-      return $this->belongsToMany('\App\Currency','outlays')
-          ->withPivot('cgestion_id','account_id','monto');
+      return $this->belongsToMany('App\Currency','outlays')
+          ->withPivot('c_gestion_id','account_id','monto');
   }
 
   public function account(){
-      return $this->belongsToMany('\App\Account','outlays')
-          ->withPivot('currency_id','cgestion_id','monto');
+      return $this->belongsToMany('App\Account','outlays')
+          ->withPivot('currency_id','c_gestion_id','monto');
   }
 
 }

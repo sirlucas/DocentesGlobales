@@ -42,10 +42,18 @@ class PdfController extends Controller
   public function fpv(Request $request){
     $id = $request->getQueryString();
     $form = FormularioIn::find($id);
+    $cuentas = null;
+    /* accede a todas las account asociados al formularios
+    y guarda la correspondiente a id=4 (Viaticos)*/
+    foreach($form->account as $account){
+      if($account->pivot->account_id == 4){
+        $cuentas = $account;
+      }
+    }
     $created_at = explode(' ', $form->created_at );
     $date = date('d-m-Y');
     $doc_id = str_pad($id, 6,'0', STR_PAD_LEFT);
-    $pdf = PDF::loadView('Form_internal.formsPDF.fpv', ['created_at'=>$created_at,'formulario' => $form, 'date' => $date, 'doc_id' => $doc_id]);
+    $pdf = PDF::loadView('Form_internal.formsPDF.fpv', ['created_at'=>$created_at,'formulario' => $form, 'date' => $date, 'doc_id' => $doc_id,'cuentas'=>$cuentas]);
     return $pdf->stream('fpvForm'.$doc_id.'.pdf');
   }
 
@@ -53,10 +61,29 @@ class PdfController extends Controller
   public function facultad(Request $request){
     $id = $request->getQueryString();
     $form = FormularioIn::find($id);
+    $pasajes = null;
+    $viaticos = null;
+    $inscripcion = null;
+    /* accede a todas las account asociados al formularios
+    y guarda la correspondiente a id=4 (Viaticos) id=1 (inscrip) id=3 (pasajes)
+    corroborar con la base de datos*/
+    foreach($form->account as $account){
+      if($account->pivot->account_id == 4){
+        $viaticos = $account;
+      }
+      if($account->pivot->account_id == 1){
+        $inscripcion = $account;
+      }
+      if($account->pivot->account_id == 3){
+        $pasajes = $account;
+      }
+    }
     $created_at = explode(' ', $form->created_at );
     $date = date('d-m-Y');
     $doc_id = str_pad($id, 6,'0', STR_PAD_LEFT);
-    $pdf = PDF::loadView('Form_internal.formsPDF.facultad', ['created_at'=>$created_at,'formulario' => $form, 'date' => $date, 'doc_id' => $doc_id]);
+    $pdf = PDF::loadView('Form_internal.formsPDF.facultad', ['created_at'=>$created_at,
+                         'formulario' => $form, 'date' => $date, 'doc_id' => $doc_id,
+                         'viaticos' => $viaticos, 'pasajes' => $pasajes, 'inscripcion' => $inscripcion]);
     return $pdf->stream('facultadForm'.$doc_id.'.pdf');
   }
 

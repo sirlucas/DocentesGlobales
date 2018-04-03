@@ -17,9 +17,9 @@ class CreateOutlaysTable extends Migration
             $table->increments('id');
             $table->decimal('monto',10,2)->nullable();
             $table->integer('currency_id')->unsigned();
-            $table->integer('cgestion_id')->unsigned();
+            $table->integer('c_gestion_id')->unsigned();
             $table->integer('account_id')->unsigned();
-            $table->integer('form_id')->unsigned();
+            $table->integer('formulario_in_id')->unsigned();
 
 
             $table->foreign('currency_id')->references('idcurrency')->on('currencies')->onDelete('no action');

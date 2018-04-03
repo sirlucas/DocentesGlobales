@@ -263,7 +263,7 @@
               </label>
               <input name="actividad_nombre" class="form-control"  type="text">
             </div>
-            
+
               <div class="form-group">
                 <label for="actividad" class="control-label">
                   Type of activity to perform during your visit
@@ -429,7 +429,7 @@
                         </div>
                       </td>
                       <td>
-                        {!!Form::select('cgestionm', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestionm', $cgestion->pluck('cgestion','id'), 1,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                       </td>
                     </tr>
                     <tr>
@@ -443,7 +443,7 @@
                         </div>
                       </td>
                       <td>
-                        {!!Form::select('cgestiona', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestiona', $cgestion->pluck('cgestion','id'), 1,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                       </td>
                     </tr>
                     <tr>
@@ -457,7 +457,7 @@
                         </div>
                       </td>
                       <td>
-                        {!!Form::select('cgestionp', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestionp', $cgestion->pluck('cgestion','id'), 1,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                       </td>
                     </tr>
                     <tr>
@@ -471,7 +471,7 @@
                         </div>
                       </td>
                       <td>
-                        {!!Form::select('cgestionv', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestionv', $cgestion->pluck('cgestion','id'), 1,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                       </td>
                     </tr>
                     <tr>
@@ -485,7 +485,7 @@
             						</div>
                       </td>
                       <td>
-                        {!!Form::select('cgestiono', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestiono', $cgestion->pluck('cgestion','id'), 1,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                       </td>
                     </tr>
                     <tr class="info">

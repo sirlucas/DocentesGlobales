@@ -272,11 +272,34 @@
         </thead>
         <tbody>
           <tr>
-            <td class="desc"><h3>Monto</h3>Montos en divisa: CLP</td>
-            <td class="pas">50000</td>
-            <td class="via">50000</td>
-            <td class="ins">50000</td>
+            @if($pasajes != null && $viaticos != null && $inscripcion != null)
+            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$pasajes->currency[0]->isocode}}</td>
+            <td class="pas">{{$pasajes->currency[0]->cursymbol}}{{$pasajes->pivot->monto}}.-</td>
+            <td class="via">{{$viaticos->currency[0]->cursymbol}}{{$viaticos->pivot->monto}}.-</td>
+            <td class="ins">{{$inscripcion->currency[0]->cursymbol}}{{$inscripcion->pivot->monto}}.-</td>
+            @elseif($pasajes != null)
+            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$pasajes->currency[0]->isocode}}</td>
+            <td class="pas">{{$pasajes->currency[0]->cursymbol}}{{$pasajes->pivot->monto}}.-</td>
+            <td class="via"></td>
+            <td class="ins"></td>
+            @elseif($viaticos != null)
+            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$viaticos->currency[0]->isocode}}</td>
+            <td class="pas"></td>
+            <td class="via">{{$viaticos->currency[0]->cursymbol}}{{$viaticos->pivot->monto}}.-</td>
+            <td class="ins"></td>
+            @elseif($inscripcion != null)
+            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$inscripcion->currency[0]->isocode}}</td>
+            <td class="pas"></td>
+            <td class="via"></td>
+            <td class="ins">{{$inscripcion->currency[0]->cursymbol}}{{$inscripcion->pivot->monto}}.-</td>
+            @else
+            <td class="desc"><h3>Monto</h3>Montos en divisa: </td>
+            <td class="pas"></td>
+            <td class="via"></td>
+            <td class="ins"></td>
+            @endif
           </tr>
+
           <tr>
             <td class="desc"><h3>Fuente de Financiamiento</h3>Ej.: Proyecto propio, Facultad, Beca, etc.</td>
             <td class="pas"></td>
@@ -296,26 +319,12 @@
           </tr>
         </thead>
         <tbody>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td></td>
-                <td></td>
-              </tr>
+          @for ($i = 0; $i <= 4; $i++)
+          <tr>
+            <td class="desc"></td>
+            <td class="cent"></td>
+          </tr>
+        @endfor
         </tbody>
       </table>
 

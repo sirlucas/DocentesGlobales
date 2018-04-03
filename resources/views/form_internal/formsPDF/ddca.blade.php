@@ -128,12 +128,35 @@
       margin: 0 0 0.2em 0;
     }
 
+    table tfoot td {
+      padding: 0px 10px;
+      background: #FFFFFF;
+      border-bottom: none;
+      font-size: 1em;
+      white-space: nowrap;
+      border-top: 1px solid #4b5660;
+    }
+
+    table tfoot tr:first-child td {
+      border-top: none;
+    }
+
+    table tfoot tr:last-child td {
+      color: #4b5660;
+      font-size: 1em;
+      border-top: 1px solid #4b5660;
+
+    }
+
+    table tfoot tr td:first-child {
+    }
+
 
     .firmas{
       position: absolute;
       padding-left: 70px;
-      padding-right: 70px;
-      bottom: 110px;
+      padding-right: 60px;
+      bottom: 100px;
     }
 
     .firmas .der{
@@ -177,11 +200,13 @@
 
     }
     .A{
-      width: 50%;
+      width: 60%;
       float: left;
+      font-size: 0.9em;
     }
+
      .B{
-      width: 48%;
+      width: 38%;
       margin-left: 5px;
       float: right;
     }
@@ -192,6 +217,11 @@
       font-family: Arial;
     }
 
+    .obs{
+      position: fixed;
+      bottom: 140px;
+      width: 50%;
+    }
 
 
 
@@ -314,45 +344,56 @@
           <h4>Detalles del Aporte Solicitado</h4>
           <table>
             <thead>
+
               <tr>
                 <th >Cuenta(*)</th>
-                <th >Monto CLP</th>
+                <th >Monto</th>
                 <th >Centro de Gestión(**)</th>
               </tr>
             </thead>
+
             <tbody>
+              @if($formulario->account->count() > 0)
+              @foreach($formulario->account as $account)
               <tr>
-                <td class="desc" >Inscripcion/Matrícula</td>
-                <td class="desc">500000</td>
-                <td class="desc">Centro x</td>
+                <td class="desc" >{{$account->cuenta}}</td>
+                <td class="desc">{{$account->currency[0]->cursymbol}}{{$account->pivot->monto}}.-</td>
+                <td class="desc">{{$account->cgestion[0]->cgestion}}</td>
+              </tr>
+              @endforeach
+              @else
+              <tr>
+                <td class="desc" >Inscripción/Matricula</td>
+                <td class="desc"></td>
+                <td class="desc"></td>
               </tr>
               <tr>
-                <td class="desc">Arancel</td>
-                <td class="desc">500000</td>
-                <td class="desc">Centro x</td>
+                <td class="desc" >Arancel</td>
+                <td class="desc"></td>
+                <td class="desc"></td>
               </tr>
               <tr>
-                <td class="desc">Viático</td>
-                <td class="desc">500000</td>
-                <td class="desc">Centro x</td>
+                <td class="desc" >Pasajes</td>
+                <td class="desc"></td>
+                <td class="desc"></td>
               </tr>
               <tr>
-                <td class="desc">Pasajes</td>
-                <td class="desc">500000</td>
-                <td class="desc">Centro x</td>
+                <td class="desc" >Viáticos</td>
+                <td class="desc"></td>
+                <td class="desc"></td>
               </tr>
               <tr>
-                <td class="desc">Otros</td>
-                <td class="desc">500000</td>
-                <td class="desc">Centro x</td>
+                <td class="desc" >Otros</td>
+                <td class="desc"></td>
+                <td class="desc"></td>
               </tr>
               <tr>
-                <td class="desc">Total</td>
-                <td class="desc">500000</td>
-
+                <td class="desc" >TOTAL</td>
+                <td class="desc"></td>
+                <td class="desc"></td>
               </tr>
-
-            </tbody>
+              @endif
+          </tbody>
           </table>
         </div>
 
@@ -373,7 +414,7 @@
       </div>
 
 
-      <div class="A obs">
+      <div class="obs">
         <h4>Solicitado por</h4>
         <table>
           <tr>

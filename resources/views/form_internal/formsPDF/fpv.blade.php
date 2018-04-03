@@ -257,21 +257,33 @@
             <td class="service">Sede</td>
             <td class="cent">{{$formulario->dom_sede_id}}</td>
             <td class="desc">{{$formulario->sede->sede}}</td>
-
           </tr>
+          @if(is_object($cuentas))
           <tr>
             <td class="service">Centro de Gestión</td>
-            <td class="cent">{{$formulario->rut}}</td>
-            <td class="desc">{{$formulario->rut}}</td>
+            <td class="cent">{{$cuentas->cgestion[0]->codigo}}</td>
+            <td class="desc">{{$cuentas->cgestion[0]->cgestion}}</td>
           </tr>
           <tr>
             <td class="service">Cuenta (Gasto)</td>
-            <td class="cent">{{$formulario->dom_unidad_id}}</td>
-            <td class="desc">{{$formulario->unidad->unidad}}</td>
+            <td class="cent">{{$cuentas->codigo}}</td>
+            <td class="desc">{{$cuentas->cuenta}}</td>
           </tr>
-
+          @else
+          <tr>
+            <td class="service">Centro de Gestión</td>
+            <td class="cent">--</td>
+            <td class="desc">--</td>
+          </tr>
+          <tr>
+            <td class="service">Cuenta (Gasto)</td>
+            <td class="cent">--</td>
+            <td class="desc">Cuenta Viáticos No Asociada</td>
+          </tr>
+          @endif
         </tbody>
       </table>
+
 
       <table>
           <h4>Datos Prestador de Servicios: (*)</h4>
@@ -309,7 +321,7 @@
                 </tr>
               </thead>
               <tbody>
-                @for ($i = 1; $i <= 9; $i++)
+              @for ($i = 1; $i <= 9; $i++)
                 <tr>
                   <td class="desc"></td>
                   <td class="cent"></td>
@@ -319,14 +331,17 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <td class="service" colspan="2">MONTO TOTAL:(*)</td>
-
-                  <td class="cent"> $50000</td>
+                  @if(is_object($cuentas))
+                  <td class="service" colspan="2">MONTO TOTAL:(*)<br> <small>Divisa: {{$cuentas->currency[0]->isocode}}</small> </td>
+                  <td class="cent">{{$cuentas->currency[0]->cursymbol}}{{$cuentas->pivot->monto}}.- </td>
+                  @else
+                  <td class="service" colspan="2">MONTO TOTAL:(*)<br> <small>Divisa: </small> </td>      
+                  <td class="cent"> </td>
+                  @endif
                 </tr>
               </tfoot>
           </table>
         </div>
-
         <div class="B">
           <h4>Observaciones</h4><small>(Detallar Actividad Realizada)</small>
           <textarea >
@@ -359,7 +374,12 @@
     <div class="firmas">
       <div class="der">
         <div class="cargo">Responsable Centro de Gestión</div>
-        <div class="nombre"></div>
+        @if(is_object($cuentas))
+        <td class="nombre">{{$cuentas->cgestion[0]->responsable}} </td>
+        @else
+        <div class="nombre">Nombre y Firma</div>
+        @endif
+
       </div>
 
       <div class="izq">
