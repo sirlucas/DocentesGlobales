@@ -17,7 +17,7 @@
                 </div>
             </div>
         <?php endif; ?>
-        <!-- search form (Optional) -->
+        <!-- search form (Optional)
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="<?php echo e(trans('adminlte_lang::message.search')); ?>..."/>

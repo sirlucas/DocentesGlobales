@@ -66,14 +66,8 @@ class FormulariosInController extends Controller
   public function store(Request $request){
 
 
-
-
     $dates = explode(' / ', $request->get('ida_retorno'));
     //dd(date_format($dates[0], 'Y-m-d'));
-  //  dd($dates);
-
-
-
 
     $formularioin= FormularioIn::create([
        'rut'  => $request->get('rut'),
@@ -111,33 +105,31 @@ class FormulariosInController extends Controller
       $formularioin->cgestion()->attach($request->get('cgestionm'),['currency_id'=>$request->get('currency'),'account_id'=>'1', 'monto'=>$request->get('matricula')]);
     }
     if ($request->get('arancel')) {
+      //account_id = 2 corresponde a arancel
       $formularioin->cgestion()->attach($request->get('cgestiona'),['currency_id'=>$request->get('currency'), 'account_id'=>'2', 'monto'=>$request->get('arancel')]);
 
     }
     if ($request->get('pasajes')) {
+      //account_id = 3 corresponde a pasajes
       $formularioin->cgestion()->attach($request->get('cgestionp'),['currency_id'=>$request->get('currency'), 'account_id'=>'3', 'monto'=>$request->get('pasajes')]);
 
     }
     if ($request->get('viaticos')) {
+      //account_id = 4 corresponde a viaticos
       $formularioin->cgestion()->attach($request->get('cgestionv'),['currency_id'=>$request->get('currency'), 'account_id'=>'4', 'monto'=>$request->get('viaticos')]);
 
     }
     if ($request->get('otros')) {
+      //account_id = 5 corresponde a otros
       $formularioin->cgestion()->attach($request->get('cgestiono'),['currency_id'=>$request->get('currency'), 'account_id'=>'5', 'monto'=>$request->get('otros')]);
 
     }
     if ($request->get('total')) {
+      //account_id = 6 corresponde a total
       // c_gestion_id = 1 => "NO APLICA"
       $formularioin->cgestion()->attach('1',['currency_id'=>$request->get('currency'), 'account_id'=>'6','monto'=>$request->get('total')]);
 
     }
-
-
-
-
-
-
-
 
     return redirect()->route('formin.index')
                     ->with('success','Formulario Ingresado Correctamente.');
@@ -150,6 +142,77 @@ class FormulariosInController extends Controller
   }
 
   public function edit($id){
+
+    $form            = FormularioIn::findOrFail($id);
+    $cities          = City::orderBy('ciudad', 'asc')->get();
+    $countries       = Country::All();
+    $cargos          = DomCargo::All();
+    $clasificaciones = DomClasificacion::All();
+    $unidades        = DomFaculty::All();
+    $sedes           = DomSede::All();
+    $actividades     = DomActivity::All();
+    $currencies      = Currency::All();
+    $carreras        = DomCareer::All();
+    $cgestiones      = CGestion::All();
+
+    //futura mejora de eficiencia:
+    $e = explode('-',$form->fecha_ida);
+    $r =array_reverse($e);
+    $dates[0]= implode('-',$r);
+    $e = explode('-',$form->fecha_retorno);
+    $r =array_reverse($e);
+    $dates[1]= implode('-',$r);
+    $ida_retorno = implode(' / ', $dates );
+    //--
+    $matricula = $arancel = $pasajes = $viaticos = $otros = $total = $divisa = null;
+    foreach($form->account as $account){
+      $divisa = $account->pivot->currency_id;
+
+      if($account->pivot->account_id == 1){
+        $matricula = $account;
+
+
+      }
+      if($account->pivot->account_id == 2){
+        $arancel = $account;
+        $divisa = $arancel->pivot->currency_id;
+
+      }
+      if($account->pivot->account_id == 3){
+        $pasajes = $account;
+      }
+      if($account->pivot->account_id == 4){
+        $viaticos = $account;
+
+      }
+      if($account->pivot->account_id == 5){
+        $otros = $account;
+
+      }
+      if($account->pivot->account_id == 6){
+        $total = $account;
+      }
+    }
+
+
+  	return view('form_internal.edit')->with('countries',$countries)
+                                      ->with('cargos',$cargos)
+                                      ->with('clasis',$clasificaciones)
+                                      ->with('unidades',$unidades)
+                                      ->with('sedes',$sedes)
+                                      ->with('actividades',$actividades)
+                                      ->with('divisas',$currencies)
+                                      ->with('carreras',$carreras)
+                                      ->with('cgestion',$cgestiones)
+                                      ->with('form',$form)
+                                      ->with('ida_retorno', $ida_retorno)
+                                      ->with('matricula',$matricula)
+                                      ->with('arancel', $arancel)
+                                      ->with('pasajes', $pasajes)
+                                      ->with('viaticos', $viaticos)
+                                      ->with('otros', $otros)
+                                      ->with('total',$total)
+                                      ->with('divisa',$divisa);
   }
 
 

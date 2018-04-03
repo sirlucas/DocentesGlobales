@@ -412,7 +412,7 @@
                     <tr>
                       <td><span class="fa fa-asterisk" style="font-size:7px;"></span><span class="fa fa-asterisk" style="font-size:7px;"></span>Cuenta</td>
                       <td>
-                        {!!Form::select('currency', $divisas->pluck('currency','idcurrency'), 1,['placeholder'=>'Select Currency','class' => 'form-control select2' ,'required', 'id'=>'currency'])!!}
+                        {!!Form::select('currency', $divisas->pluck('currency','id'), 1,['placeholder'=>'Select Currency','class' => 'form-control select2' ,'required', 'id'=>'currency'])!!}
                       </td>
                       <td>Centro de Gestión</td>
                     </tr>

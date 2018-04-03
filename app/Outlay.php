@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Outlay extends Model
 {
-/*  protected $table = 'outlays';
-  protected $fillable = ["monto",'responsable','cgestion_id','currency_id','account_id','form_id'];
+  protected $table = 'outlays';
+  protected $fillable = ["monto",'c_gestion_id','currency_id','account_id','formulario_in_id'];
 
 
 
   public function divisa(){
-    return $this->hasOne('App\Currency','idcurrency','currency_id');
+    return $this->hasOne('App\Currency','id','currency_id');
   }
 
   public function cuenta(){
@@ -20,8 +20,8 @@ class Outlay extends Model
   }
 
   public function cgestion(){
-    return $this->hasOne('App\CGestion','id','cgestion_id');
-  }*/
+    return $this->hasOne('App\CGestion','id','c_gestion_id');
+  }
 
 /* revisar para has many
   public function formulario(){

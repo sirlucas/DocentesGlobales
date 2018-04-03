@@ -21,6 +21,6 @@ class Account extends Model
 
   public function formulario(){
       return $this->belongsToMany('App\FormularioIn','outlays')
-          ->withPivot('currency_id','c_gestion_in_id','monto');
+          ->withPivot('currency_id','c_gestion_id','monto');
   }
 }

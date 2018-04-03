@@ -28,7 +28,7 @@
       }
 
       header {
-        padding: 0px 0;
+        padding: 10px 0;
         margin-bottom: 0px;
       }
 
@@ -335,7 +335,7 @@
                   <td class="service" colspan="2">MONTO TOTAL:(*)<br> <small>Divisa: {{$cuentas->currency[0]->isocode}}</small> </td>
                   <td class="cent">{{$cuentas->currency[0]->cursymbol}}{{$cuentas->pivot->monto}}.- </td>
                   @else
-                  <td class="service" colspan="2">MONTO TOTAL:(*)<br> <small>Divisa: </small> </td>      
+                  <td class="service" colspan="2">MONTO TOTAL:(*)<br> <small>Divisa: </small> </td>
                   <td class="cent"> </td>
                   @endif
                 </tr>

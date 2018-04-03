@@ -22,10 +22,10 @@ class CreateOutlaysTable extends Migration
             $table->integer('formulario_in_id')->unsigned();
 
 
-            $table->foreign('currency_id')->references('idcurrency')->on('currencies')->onDelete('no action');
-            $table->foreign('cgestion_id')->references('id')->on('c_gestions')->onDelete('no action');
+            $table->foreign('currency_id')->references('id')->on('currencies')->onDelete('no action');
+            $table->foreign('c_gestion_id')->references('id')->on('c_gestions')->onDelete('no action');
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('no action');
-            $table->foreign('form_id')->references('id')->on('formularios')->onDelete('no action');
+            $table->foreign('formulario_id')->references('id')->on('formularios')->onDelete('no action');
             $table->timestamps();
         });
     }

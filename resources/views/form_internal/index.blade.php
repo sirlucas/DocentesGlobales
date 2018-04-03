@@ -36,6 +36,7 @@
             <table id="last" class="table table-hover">
               <thead>
                 <tr>
+									<th hidden></th>
                   <th>Fecha Registro</th>
                   <th>Destino</th>
                   <th>Fecha Viaje</th>
@@ -47,6 +48,7 @@
 							<tbody>
 								@foreach ($forms as $form)
 								<tr>
+									<td hidden>{{ $form->id}}</td>
 									<td>{{ $form->created_at}}</td>
 									<td>{{ $form->institucion_anf }}</td>
 									<td>{{ $form->fecha_ida }} <br> {{ $form->fecha_retorno }}</td>
@@ -64,8 +66,8 @@
                     		<li><a href="{{route('formin/facultad', $form->id)}}" target="_blank"><i class="fa fa-file-pdf-o"></i> Facultad</a></li>
 												<li><a href="{{route('formin/fpv', $form->id)}}" target="_blank"><i class="fa fa-file-pdf-o"></i> FPV</a></li>
                   		</ul>
-											<a class="btn btn-primary btn-xs" href="" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
-											<a class="btn btn-success btn-xs" href="{{ route('formin/drrhh', $form->id) }}" data-toggle="tooltip" data-placement="top" title="Reciclar datos"><i class="fa fa-recycle"></i></a>
+											<a class="btn btn-primary btn-xs" href="{{ route('formin.edit', $form->id) }}" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
+											<a class="btn btn-success btn-xs" href="{{ route('formin/ddca', $form->id) }}" data-toggle="tooltip" data-placement="top" title="Reciclar datos"><i class="fa fa-recycle"></i></a>
 
                 		</div>
 										</td>

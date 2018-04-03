@@ -86,7 +86,7 @@ $(document).ready(function(){
         nombre: {
           required: true,
           letrasNombre: true,
-          maxlength: 50,
+          maxlength: 60,
           minlength: 3,
         },
         email: {
@@ -445,7 +445,8 @@ $(document).ready(function(){
          'info'         : false,
          'autoWidth'    : false,
          'lengthMenu'   : [[5, -1], [5, "All"]],
-         'order'        : [[ 0, 'dsc' ]],
+         "order": [[ 0, 'desc' ]],
+
  				language: {
  				    "sProcessing":     "Procesando...",
  				    "sLengthMenu":     "Mostrar _MENU_ registros",

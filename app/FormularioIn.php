@@ -38,10 +38,7 @@ class FormularioIn extends Model
 
 // ./ mutators and accesors
 
-  public function users(){
-    return $this->belongsToMany('\App\User','user_has_forms')
-   ->withPivot('user_id','fecha');
- }
+
 
  public function cargo(){
    return $this->hasOne('App\DomCargo','id','dom_cargo_id');
@@ -75,7 +72,7 @@ class FormularioIn extends Model
     return $this->hasMany('App\Host');
   }
 
-  // para outlays
+  // relaciones many to many con pivote tabla "outlays" con almacenamiento de monto
 
   public function cgestion(){
         return $this->belongsToMany('App\CGestion','outlays')
@@ -91,5 +88,12 @@ class FormularioIn extends Model
       return $this->belongsToMany('App\Account','outlays')
           ->withPivot('currency_id','c_gestion_id','monto');
   }
+
+  //relacion many yo many con tabla pivote user_has_forms, con almacenamiento de fecha
+
+  public function users(){
+    return $this->belongsToMany('\App\User','user_has_forms')
+   ->withPivot('user_id','fecha');
+ }
 
 }

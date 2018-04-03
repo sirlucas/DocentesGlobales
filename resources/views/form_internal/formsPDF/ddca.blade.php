@@ -110,6 +110,18 @@
       text-align: left;
       font-size: 1.1em;
     }
+    table .left{
+      text-align: left;
+      color: #5D6975;
+      font-style: oblique
+      font-size: 1.1em;
+    }
+    table .left r{
+      text-align: left;
+      color: #5D6975;
+      font-style: oblique
+      font-size: 1.1em;
+    }
 
     table td {
       padding: 5px;
@@ -211,7 +223,7 @@
       float: right;
     }
     #bloque .B textarea{
-      height: 8em;
+      height: 6em;
       font-family: Arial, sans-serif;
       font-size: 12px;
       font-family: Arial;
@@ -311,29 +323,36 @@
           <tr>
             <th class="service"></th>
             <th class="desc"></th>
+            <th class="desc"></th>
+            <th class="desc"></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td class="service">Nombre de la Actividad / Propósito</td>
-            <td class="desc">{{$formulario->actividad_nombre}} <br>   {{$formulario->proposito}} </td>
+            <td colspan="2" class="service">Nombre de la Actividad / Propósito</td>
+            <td colspan="2" class="desc">{{$formulario->actividad_nombre}} <br>   {{$formulario->proposito}} </td>
 
           </tr>
           <tr>
-            <td class="service">Tipo de Actividad</td>
-            <td class="desc">{{$formulario->clasificacion->clasificacion}} - {{$formulario->actividad->actividad}}</td>
+            <td colspan="2" class="service">Tipo de Actividad</td>
+            <td colspan="2" class="desc">{{$formulario->clasificacion->clasificacion}} - {{$formulario->actividad->actividad}}</td>
           </tr>
           <tr>
-            <td class="service">Plazo de Viaje</td>
+            <td colspan="2"class="service">Plazo de Viaje</td>
             <td class="desc">Fecha de Inicio: {{$formulario->fecha_ida}} <br> Fecha de Retorno: {{$formulario->fecha_retorno}}</td>
+            <td class="left">
+              Duración de la Activdad (en Horas): ______
+              <br>
+              Actividad Incluida en Plan de Trabajo: <b>{{$formulario->ipt}}</b>
+            </td>
           </tr>
           <tr>
-            <td class="service">Institución Anfitriona</td>
-            <td class="desc">{{$formulario->institucion_anf}}</td>
+            <td colspan="2" class="service">Institución Anfitriona</td>
+            <td colspan="2" class="desc">{{$formulario->institucion_anf}}</td>
           </tr>
           <tr>
-            <td class="service">Ciudad - País</td>
-            <td class="desc">{{$formulario->ciudad->ciudad}} - {{$formulario->ciudad->pais->pais}}</td>
+            <td colspan="2" class="service">Ciudad - País</td>
+            <td colspan="2"class="desc">{{$formulario->ciudad->ciudad}} - {{$formulario->ciudad->pais->pais}}</td>
           </tr>
         </tbody>
       </table>
