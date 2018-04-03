@@ -87,7 +87,7 @@
                   <br>
                   (Número telefónico)
                 </label>
-                {!! Form::text('email',$form->telefono,['class' => 'form-control phone', 'placeholder'=>'987654321', 'id'=>'telefono']) !!}
+                {!! Form::text('telefono',$form->telefono,['class' => 'form-control phone', 'placeholder'=>'987654321', 'id'=>'telefono']) !!}
               </div>
 
               <div class="form-group">
@@ -188,7 +188,7 @@
                   (País)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
-                  {!!Form::select('pais', $countries->pluck('pais','id'), null,['placeholder'=>'Selecciona un País','class' => 'form-control  select2' ,'required', 'id'=>'countries'])!!}
+                  {!!Form::select('pais', $countries->pluck('pais','id'), $form->ciudad->pais->id,['placeholder'=>'Selecciona un País','class' => 'form-control  select2' ,'required', 'id'=>'countries'])!!}
               </div>
 
               <div class="form-group col-sm-6">
@@ -198,7 +198,9 @@
                   (Ciudad o Estado)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
-                  <select  id="cities" class="form-control select2" name="cities"></select>
+                  <select  id="cities" class="form-control select2" name="cities">
+                  <option value="{{$form->ciudad->id}}" selected>{{$form->ciudad->ciudad}}</option>
+                  </select>
               </div>
 
               <div class="form-group">
@@ -256,7 +258,7 @@
                 Activity included in your work plan?
                 </label>
                 <select name="plantrabajo"  required class="form-control select2">
-                  <option value="" disabled selected>Selecciona una opción...</option>
+                  <option value="{{$form->ipt}}" selected>{{$form->ipt}}</option>
                   <option value="Si">Si</option>
                   <option value="No">No</option>
                   <option value="Por Ingresar">Por Ingresar</option>
@@ -409,7 +411,7 @@
                       </td>
                       <td>
                         @if($matricula != null)
-                        {!!Form::select('cgestionm', $cgestion->pluck('cgestion','id'), $matricula->cgestion[0]->id,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestionm', $cgestion->pluck('cgestion','id'), $matricula->pivot->c_gestion_id,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                         @else
                         {!!Form::select('cgestionm', $cgestion->pluck('cgestion','id'), null,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                         @endif
@@ -431,7 +433,7 @@
                       </td>
                       <td>
                         @if($arancel != null)
-                        {!!Form::select('cgestiona', $cgestion->pluck('cgestion','id'), $arancel->cgestion[0]->id,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestiona', $cgestion->pluck('cgestion','id'), $arancel->pivot->c_gestion_id,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                         @else
                         {!!Form::select('cgestiona', $cgestion->pluck('cgestion','id'), 1,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                         @endif
@@ -453,7 +455,7 @@
                       </td>
                       <td>
                         @if($pasajes != null)
-                        {!!Form::select('cgestionp', $cgestion->pluck('cgestion','id'), $pasajes->cgestion[0]->id,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestionp', $cgestion->pluck('cgestion','id'), $pasajes->pivot->c_gestion_id,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                         @else
                         {!!Form::select('cgestionp', $cgestion->pluck('cgestion','id'), 1,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                         @endif
@@ -475,7 +477,7 @@
                       </td>
                       <td>
                         @if( $viaticos != null )
-                        {!!Form::select('cgestionv', $cgestion->pluck('cgestion','id'), $viaticos->cgestion[0]->id,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestionv', $cgestion->pluck('cgestion','id'), $viaticos->pivot->c_gestion_id,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                         @else
                         {!!Form::select('cgestionv', $cgestion->pluck('cgestion','id'), 1,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                         @endif
@@ -497,7 +499,7 @@
                       </td>
                       <td>
                         @if( $otros != null)
-                        {!!Form::select('cgestiono', $cgestion->pluck('cgestion','id'), $otros->cgestion[0]->id,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
+                        {!!Form::select('cgestiono', $cgestion->pluck('cgestion','id'), $otros->pivot->c_gestion_id,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                         @else
                         {!!Form::select('cgestiono', $cgestion->pluck('cgestion','id'), 1,['placeholder'=>'Seleccione C. Gestión','class' => 'form-control select2'])!!}
                         @endif
@@ -546,14 +548,6 @@
         </div>
       <!-- </div> -->
       <!-- /.box-body -->
-      <!-- box-footer
-     <div class="box-footer">
-        <ul class="">
-          <li class="pull-left "><a href="{{ route('formin.index') }}" class="btn btn-default">Cancelar</a></li>
-          <li class="pull-right" ><button type="submit" class="btn btn-primary">Enviar</button></li>
-        </ul>
-      </div>
-    /.box-footer -->
     {!! Form::close() !!}
     </div>
 

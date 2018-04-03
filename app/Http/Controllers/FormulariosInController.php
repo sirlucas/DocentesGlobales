@@ -170,8 +170,6 @@ class FormulariosInController extends Controller
 
       if($account->pivot->account_id == 1){
         $matricula = $account;
-
-
       }
       if($account->pivot->account_id == 2){
         $arancel = $account;
@@ -222,6 +220,72 @@ class FormulariosInController extends Controller
 
   public function update(Request $request, $id){
 
+          $dates = explode(' / ', $request->get('ida_retorno'));
+           $form = FormularioIn::find($id)->update([
+              'rut'  => $request->get('rut'),
+              'nombre' => $request->get('nombre'),
+              'email' => $request->get('email'),
+              'telefono' => $request->get('telefono'),
+              'dom_unidad_id' => $request->get('unidad'),
+              'dom_sede_id' => $request->get('sede'),
+              'dom_cargo_id'=> $request->get('cargo'),
+              'dom_carrera_id' => $request->get('carreras'),
+              'postitulo'=> $request->get('postitulo'),
+              'institucion_anf' => $request->get('inst_anf'),
+              'website' => $request->get('website'),
+              'dom_ciudad_id' => $request->get('cities'),
+              'inst_descripcion'=> $request->get('inst_descripcion'),
+              'fecha_ida'=> $dates[0],
+              'fecha_retorno'=> $dates[1],
+              'dom_actividad_id'=> $request->get('actividad'),
+              'actividad_nombre'=> $request->get('actividad_nombre'),
+              'ipt' => $request->get('plantrabajo'),
+              'dom_clasificacion_id'=> $request->get('clasis'),
+              'proposito' => $request->get('proposito'),
+              'contacto_anf'=> $request->get('contacto_anf'),
+              'cont_cargo'=> $request->get('cargo_anf'),
+              'cont_email' => $request->get('email_anf'),
+              'cont_fono'=> $request->get('fono_anf'),
+              'colaboracion' => $request->get('colaboracion'),
+              'observaciones'=> $request->get('observaciones'),
+           ]);
+
+           $form = FormularioIn::find($id);
+           if ($request->get('matricula')) {
+             //account_id = 1 corresponde a matriculas
+            $form->account()->updateExistingPivot('1',['c_gestion_id'=>$request->get('cgestionm'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('matricula')]);
+          //  $form->cgestion()->sync($request->get('cgestionm'),['currency_id'=>$request->get('currency'),'account_id'=>'1', 'monto'=>$request->get('matricula')]);
+
+           }
+           if ($request->get('arancel')) {
+             //account_id = 2 corresponde a arancel
+           $form->account()->updateExistingPivot('2',['c_gestion_id'=>$request->get('cgestiona'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('arancel')]);
+        //  $formularioin->cgestion()->sync($request->get('cgestiona'),['currency_id'=>$request->get('currency'), 'account_id'=>'2', 'monto'=>$request->get('arancel')]);
+
+           }
+           if ($request->get('pasajes')) {
+             //account_id = 3 corresponde a pasajes
+            $form->account()->updateExistingPivot('3',['c_gestion_id'=>$request->get('cgestionp'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('pasajes')]);
+
+           }
+           if ($request->get('viaticos')) {
+             //account_id = 4 corresponde a viaticos
+             $form->account()->updateExistingPivot('4',['c_gestion_id'=>$request->get('cgestionv'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('viaticos')]);
+
+           }
+           if ($request->get('otros')) {
+             //account_id = 5 corresponde a otros
+             $form->account()->updateExistingPivot('5',['c_gestion_id'=>$request->get('cgestiono'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('otros')]);
+
+           }
+           if ($request->get('total')) {
+             //account_id = 6 corresponde a total
+             // c_gestion_id = 1 => "NO APLICA"
+             $form->account()->updateExistingPivot('6',['c_gestion_id'=>'1','currency_id'=>$request->get('currency'), 'monto'=>$request->get('total')]);
+
+           }
+           return redirect()->route('formin.index')
+                           ->with('success','Formulario Editado Correctamente.');
   }
 
   // Funcion para enviar datos de ciudades que pertenencen a un pais.
