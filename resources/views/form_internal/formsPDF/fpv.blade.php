@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 
-    <title>ddca form</title>
+    <title>PDF form</title>
     <style media="screen">
 
       .clearfix:after {
@@ -34,32 +34,39 @@
 
       #logo {
         float: left;
-        height: 70px;
-        width: 221px;
-        text-align: center;
-        vertical-align:text-bottom;
-        background: url(/img/set_corporativos/uddbajada70.png);
+        height: 48px;
+        width: 150px;
+        background: url(/img/set_corporativos/logo-udd-bajada150x48.png);
       }
 
       #folio {
         float: right;
+
       }
 
-
-      h1 {
+      .titulo{
         border-top: 1px solid  #5D6975;
         border-bottom: 1px solid  #5D6975;
-        color: /*#5D6975;*/ #4b5660;
-        font-size: 2.2em;
-        line-height: 1.3em;
-        font-weight: normal;
-        text-align: center;
-        margin: 70px 0 20px 0;
+        margin: 60px 0 20px 0;
+        height: 4em;
         background: url(/img/set_corporativos/dimension.png);
       }
-      h1 small{
-        font-size: 0.6em;
+
+      .titulo h1 {
+        color: /*#5D6975;*/ #4b5660;
+        font-size: 2.2em;
         line-height: 1em;
+        margin: 2px 0 0px 0;
+        font-weight: normal;
+        text-align: center;
+      }
+      .titulo h4{
+        /*  border-bottom: 1px solid  #5D6975;*/
+        color: #5D6975;
+        font-size: 1.4em;
+        margin: 8px 0 0px 5px;
+        font-weight: normal;
+        text-align: center;
       }
 
       h4{
@@ -212,6 +219,13 @@
       font-size: 1.1em;
     }
 
+    .firmas .nombretop{
+      position: fixed;
+      float: right;
+      font-size: 1em;
+      bottom: 125px;
+    }
+
 
 
     footer {
@@ -226,22 +240,20 @@
     }
 
 
-
-
-
-
     </style>
   </head>
   <body>
     <header class="clearfix">
       <div id="logo">
       </div>
-
       <div class="company">
         <small id="folio">FPV{{ $doc_id }}</small><br>
         <small id="folio">Fecha Registro: {{ $formulario->created_at }}</small>
       </div>
-      <h1>Formulario de Pago de Viáticos<br></h1>
+      <div class="titulo">
+        <h1>Formulario de Pago de Viáticos</h1>
+        <h4>Vicerrectoría Económica</h4>
+      </div>
     </header>
     <main>
       <table>
@@ -371,22 +383,27 @@
       </div>
     </div>
 
-    <div class="firmas">
-      <div class="der">
-        <div class="cargo">Responsable Centro de Gestión</div>
-        @if(is_object($cuentas))
-        <td class="nombre">{{$cuentas->cgestion[0]->responsable}} </td>
-        @else
-        <div class="nombre">Nombre y Firma</div>
-        @endif
 
-      </div>
+
+
+    <div class="firmas">
 
       <div class="izq">
         <div class="cargo">Analista VRE</div>
-        <div class="nombre">Nombre y Firma</div>
+        <div class="nombre">Nombre</div>
       </div>
+
+      @if(is_object($cuentas))
+      <div class="nombretop">{{$cuentas->cgestion[0]->responsable}} </div>
+      @endif
+      <div class="der">
+        <div class="cargo">Responsable Centro de Gestión</div>
+        <div class="nombre">Nombre</div>
+      </div>
+
     </div>
+
+
 
 
 

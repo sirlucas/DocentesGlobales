@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 
-    <title>facultad form</title>
+    <title>PDF form</title>
     <style media="screen">
 
       .clearfix:after {
@@ -29,14 +29,14 @@
 
       header {
         padding: 10px 0;
-        margin-bottom: 10px;
+        margin-bottom: 0px;
       }
 
       #logo {
         float: left;
-        height: 70px;
-        width: 221px;
-        background: url(/img/set_corporativos/uddbajada70.png);
+        height: 48px;
+        width: 150px;
+        background: url(/img/set_corporativos/logo-udd-bajada150x48.png);
       }
 
       #logo img {
@@ -47,22 +47,34 @@
         float: right;
 
       }
-
-      h1 {
+      .titulo{
         border-top: 1px solid  #5D6975;
         border-bottom: 1px solid  #5D6975;
+        margin: 60px 0 20px 0;
+        height: 4em;
+        background: url(/img/set_corporativos/dimension.png);
+
+      }
+
+      .titulo h1 {
         color: /*#5D6975;*/ #4b5660;
         font-size: 2.2em;
-        line-height: 1.3em;
+        line-height: 1em;
+        margin: 2px 0 0px 0;
         font-weight: normal;
         text-align: center;
-        margin: 70px 0 20px 0;
-        background: url(/img/set_corporativos/dimension.png);
       }
-      h1 small{
-        font-size: 0.6em;
-        line-height: 1em;
+
       }
+      .titulo h4{
+      /*  border-bottom: 1px solid  #5D6975;*/
+        color: #5D6975;
+        font-size: 1.4em;
+        margin: 8px 0 0px 5px;
+        font-weight: normal;
+        text-align: center;
+      }
+
 
       h4{
       /*  border-bottom: 1px solid  #5D6975;*/
@@ -222,11 +234,10 @@
         <small id="folio">FAC{{ $doc_id }}</small><br>
         <small id="folio">Fecha Registro: {{ $formulario->created_at }}</small>
       </div>
-      <h1>
-        Autorización de Viajes Académicos UDD
-        <br>
-        <small>{{$formulario->unidad->unidad}}</small>
-      </h1>
+      <div class="titulo">
+        <h1>Autorización de Viajes Académicos UDD</h1>
+        <h4>{{$formulario->unidad->unidad}}</h4>
+      </div>
     </header>
     <main>
       <table>
@@ -310,7 +321,7 @@
       </table>
 
 
-      <h4>Otros Viajes Considerados Durante el Presente Año:</h4>
+      <h4>Otros viajes considerados durante el presente año:</h4>
       <table id="viajes">
         <thead>
           <tr>
@@ -329,7 +340,7 @@
       </table>
 
       <div class="opcion">
-        <h4>¿Acordó con el Director de Carrera como Recuperará sus Clases?</h4>
+        <h4>¿Acordó con el director de carrera como recuperará sus clases?</h4>
         <ul>
           <li>
             <input type="checkbox" >
@@ -346,7 +357,7 @@
       <div class="firmas">
         <div class="der">
           <div class="nombre">{{$formulario->nombre}}</div>
-          <div class="cargo">Firma</div>
+          <div class="cargo">Nombre y Firma</div>
         </div>
       </div>
 

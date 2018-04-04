@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 
-    <title>facultad form</title>
+    <title>PDF form</title>
     <style media="screen">
 
       .clearfix:after {
@@ -29,14 +29,14 @@
 
       header {
         padding: 10px 0;
-        margin-bottom: 10px;
+        margin-bottom: 0px;
       }
 
       #logo {
         float: left;
-        height: 70px;
-        width: 221px;
-        background: url(/img/set_corporativos/uddbajada70drrhh.png);
+        height: 48px;
+        width: 150px;
+        background: url(/img/set_corporativos/logo-udd-bajada150x48.png);
       }
 
       #logo img {
@@ -45,19 +45,47 @@
 
       #folio {
         float: right;
-      }
 
-      h1 {
+      }
+      .titulo{
         border-top: 1px solid  #5D6975;
         border-bottom: 1px solid  #5D6975;
+        margin: 60px 0 20px 0;
+        height: 4em;
+        background: url(/img/set_corporativos/dimension.png);
+
+      }
+
+      .titulo h1 {
         color: /*#5D6975;*/ #4b5660;
         font-size: 2.2em;
-        line-height: 1.3em;
+        line-height: 1em;
+        margin: 2px 0 0px 0;
         font-weight: normal;
         text-align: center;
-        margin: 70px 0 20px 0;
-        background: url(/img/set_corporativos/dimension.png);
       }
+
+      }
+      .titulo h4{
+      /*  border-bottom: 1px solid  #5D6975;*/
+        color: #5D6975;
+        font-size: 1.4em;
+        margin: 8px 0 0px 5px;
+        font-weight: normal;
+        text-align: center;
+      }
+
+
+      h4{
+      /*  border-bottom: 1px solid  #5D6975;*/
+        color: #5D6975;
+        font-size: 1.3em;
+        line-height: 0.6em;
+        margin: 20px 0 10px 0;
+        font-weight: normal;
+        text-align: left;
+      }
+
 
       h3{
         color: #5D6975;
@@ -98,6 +126,7 @@
     table .service{
       text-align: right;
       color: #5D6975;
+    /*  color: #505a63;*/
       font-style: oblique;
       font-size: 1.1em;
     }
@@ -130,7 +159,7 @@
       position: absolute;
       padding-left: 70px;
       padding-right: 70px;
-      bottom: 130px;
+      bottom: 110px;
     }
 
     .firmas .der{
@@ -175,7 +204,10 @@
         <small id="folio">RRHH{{ $doc_id }}</small><br>
         <small id="folio">Fecha Registro: {{ $formulario->created_at }}</small>
       </div>
-      <h1>Permiso Programas Para Viajes De Estudio</h1>
+      <div class="titulo">
+        <h1>Permiso Programas para Viajes de Estudio</h1>
+        <h4>Dirección de Recursos Humanos</h4>
+      </div>
     </header>
     <main>
       <table>
@@ -212,14 +244,17 @@
             <td class="service">Plazo de Viaje</td>
             <td class="desc">Fecha de Ida: {{$formulario->fecha_ida}} <br> Fecha de Retorno: {{$formulario->fecha_retorno}}</td>
           </tr>
+          <tr>
+            <td class="service">Autorizado por</td>
+            <td class="desc"> {{$formulario->unidad->autoridad}}, {{$formulario->unidad->unidad}}</td>
+          </tr>
 
         </tbody>
       </table>
-      <h3>Autorizado por:</h3>
       <div class="firmas">
         <div class="izq">
           <div>{{$formulario->unidad->autoridad}} </div>
-          <div class="notice">{{$formulario->unidad->unidad}}</div>
+          <div class="notice">Nombre y Firma</div>
         </div>
         <div class="der">
           <div>Académico/Colaborador</div>

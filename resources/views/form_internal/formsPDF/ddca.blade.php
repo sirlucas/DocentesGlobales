@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 
-    <title>ddca form</title>
+    <title>PDF form</title>
     <style media="screen">
 
       .clearfix:after {
@@ -28,38 +28,47 @@
       }
 
       header {
-        padding: 0px 0;
+        padding: 10px 0;
         margin-bottom: 0px;
       }
 
       #logo {
         float: left;
-        height: 70px;
-        width: 221px;
-        text-align: center;
-        vertical-align:text-bottom;
-        background: url(/img/set_corporativos/uddbajada70ddca.png);
+        height: 48px;
+        width: 150px;
+        background: url(/img/set_corporativos/logo-udd-bajada150x48.png);
       }
 
       #folio {
         float: right;
       }
 
-
-      h1 {
+      .titulo{
         border-top: 1px solid  #5D6975;
         border-bottom: 1px solid  #5D6975;
+        margin: 60px 0 10px 0;
+        height: 5.6em;
+        background: url(/img/set_corporativos/dimension.png);
+
+      }
+
+      .titulo h1 {
         color: /*#5D6975;*/ #4b5660;
         font-size: 2.2em;
-        line-height: 1.3em;
+        line-height: 1em;
+        margin: 2px 0 0px 0;
         font-weight: normal;
         text-align: center;
-        margin: 60px 0 10px 0;
-        background: url(/img/set_corporativos/dimension.png);
       }
-      h1 small{
-        font-size: 0.6em;
-        line-height: 1em;
+
+      }
+      .titulo h4{
+      /*  border-bottom: 1px solid  #5D6975;*/
+        color: #5D6975;
+        font-size: 1.4em;
+        margin: 8px 0 0px 5px;
+        font-weight: normal;
+        text-align: center;
       }
 
       h4{
@@ -248,7 +257,13 @@
         <small id="folio">DDCA{{ $doc_id }}</small><br>
         <small id="folio">Fecha Registro: {{ $formulario->created_at }}</small>
       </div>
-      <h1>Solicitud de Perfeccionamiento Académico<br><small>Académicos Contratados y Honorarios con Planificación del Año en Curso</small></h1>
+      <div class="titulo">
+        <h1>Solicitud de Perfeccionamiento Académico</h1>
+        <h4>Académicos Contratados y Honorarios con Planificación del Año en Curso</h4>
+        <h4>Dirección de Desarrollo del Cuerpo Académico</h4>
+      </div>
+
+      </h1>
     </header>
     <main>
       <table>
@@ -449,7 +464,7 @@
     <div class="firmas">
       <div class="der">
         <div class="nombre">{{$formulario->nombre}}</div>
-        <div class="cargo">{{$formulario->cargo->cargo}}- Firma</div>
+        <div class="cargo">Nombre y Firma</div>
       </div>
     </div>
 
