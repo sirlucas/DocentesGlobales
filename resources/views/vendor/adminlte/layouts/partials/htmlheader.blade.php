@@ -10,7 +10,7 @@
     <link href="{{ asset('/css/custom-style.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('/plugins/select2.min.css')}}">
     <link rel="stylesheet" href="{{ asset('/plugins/datepicker3.css')}}">
-        <link rel="stylesheet" href="{{ asset('/plugins/daterangepicker.css')}}">
+    <link rel="stylesheet" href="{{ asset('/plugins/daterangepicker.css')}}">
     <link rel="stylesheet" href="{{ asset('/plugins/DataTables/dataTables.css')}}">
 
 

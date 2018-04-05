@@ -1,8 +1,25 @@
-<!DOCTYPE html>
+<?php
+require('../uddsaml/lib/_autoload.php');
+$as = new SimpleSAML_Auth_Simple('udd-sp');
+$as->requireAuth();
+$attributes = $as->getAttributes();
+$Users = array("aldomartinezn", "andresibarra");
+if (in_array($attributes["uid"][0], $Users)) $B_Sesion = 1; else $B_Sesion = 0;
+switch($B_Sesion){
+case 1:
+//mantener en la pagina
+break;
+case 0:
+//Cerrar sesi�n y redireccionar
+session_destroy();
+header('Location: /');
+break;
+}
+?>
 <!--
-Landing page based on Pratt: http://blacktie.co/demo/pratt/
--->
-<html lang="en">
+<!DOCTYPE html>
+
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,21 +28,11 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
 
     <meta property="og:title" content="UDD" />
     <meta property="og:type" content="website" />
-    <meta property="og:description" content="Adminlte-laravel - {{ trans('adminlte_lang::message.landingdescription') }}" />
-    <meta property="og:url" content="http://demo.adminlte.acacha.org/" />
-    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE.png" />
-    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE600x600.png" />
-    <meta property="og:image" content="http://demo.adminlte.acacha.org/img/AcachaAdminLTE600x314.png" />
-    <meta property="og:sitename" content="demo.adminlte.acacha.org" />
-    <meta property="og:url" content="http://demo.adminlte.acacha.org" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@acachawiki" />
-    <meta name="twitter:creator" content="@acacha1" />
+
 
     <title>{{ trans('adminlte_lang::message.landingdescriptionpratt') }}</title>
 
-    <!-- Custom styles for this template -->
     <link href="{{ asset('/css/all-landing.css') }}" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
@@ -65,7 +72,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div id="headerwrap">
             <div class="container">
                 <div class="row centered">
-                  
+
                 </div>
             </div> <!--/ .container -->
         </div><!--/ #headerwrap -->
@@ -96,4 +103,4 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
     })
 </script>
 </body>
-</html>
+</html>-->

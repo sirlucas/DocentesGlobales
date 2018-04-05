@@ -1,3 +1,22 @@
+<?php
+require('../uddsaml/lib/_autoload.php');
+$as = new SimpleSAML_Auth_Simple('udd-sp');
+$as->requireAuth();
+$attributes = $as->getAttributes();
+$Users = array("aldomartinezn", "andresibarra");
+if (in_array($attributes["uid"][0], $Users)) $B_Sesion = 1; else $B_Sesion = 0;
+switch($B_Sesion){
+case 1:
+//mantener en la pagina
+break;
+case 0:
+//Cerrar sesi�n y redireccionar
+session_destroy();
+header('Location: /');
+break;
+}
+?>
+
 <!DOCTYPE html>
 <!--
 Landing page based on Pratt: http://blacktie.co/demo/pratt/
@@ -65,7 +84,7 @@ Landing page based on Pratt: http://blacktie.co/demo/pratt/
         <div id="headerwrap">
             <div class="container">
                 <div class="row centered">
-                  
+
                 </div>
             </div> <!--/ .container -->
         </div><!--/ #headerwrap -->

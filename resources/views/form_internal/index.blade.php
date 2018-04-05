@@ -67,7 +67,7 @@
 												<li><a href="{{route('formin/fpv', $form->id)}}" target="_blank"><i class="fa fa-file-pdf-o"></i> FPV</a></li>
                   		</ul>
 											<a class="btn btn-primary btn-xs" href="{{ route('formin.edit', $form->id) }}" data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></a>
-											<a class="btn btn-success btn-xs" href="{{ route('formin/ddca', $form->id) }}" data-toggle="tooltip" data-placement="top" title="Reciclar datos"><i class="fa fa-recycle"></i></a>
+											<a class="btn btn-success btn-xs" href="{{ route('formin/reciclar', $form->id) }}" data-toggle="tooltip" data-placement="top" title="Reciclar datos"><i class="fa fa-recycle"></i></a>
 
                 		</div>
 										</td>

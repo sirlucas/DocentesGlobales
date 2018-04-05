@@ -10,11 +10,6 @@
 			<div class="col-md-10 col-md-offset-1">
 				<div class="box box-orange">
 					<div class="box-body">
-		<!--				<p>Con el objetivo de llevar registro de la movilidad internacional de docentes
-							y administrativos, tanto UDD como extranjeros, es que hemos establecido
-							como procedimiento completar los siguientes formularios, que servirán de
-							plataforma para generar reportes concretos sobre esta materia.</p> -->
-
 						<!-- box internos -->
 						<div class="col-md-6">
 							<div class="">
@@ -57,11 +52,6 @@
 		</div>
 	</div>
 
-
-	<script type="text/javascript">
-	$(document).ready(function() {
-
-	});
 
 	</script>
 <?php $__env->stopSection(); ?>

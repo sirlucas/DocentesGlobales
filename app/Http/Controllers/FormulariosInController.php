@@ -214,10 +214,6 @@ class FormulariosInController extends Controller
   }
 
 
-  public function reusar($id){
-
-  }
-
   public function update(Request $request, $id){
 
           $dates = explode(' / ', $request->get('ida_retorno'));
@@ -286,6 +282,47 @@ class FormulariosInController extends Controller
            }
            return redirect()->route('formin.index')
                            ->with('success','Formulario Editado Correctamente.');
+  }
+
+  // funcion para precargar los datos de docente (Solo primer step del formulario)
+  public function reciclar($id){
+
+    $form            = FormularioIn::findOrFail($id);
+    $cities          = City::orderBy('ciudad', 'asc')->get();
+    $countries       = Country::All();
+    $cargos          = DomCargo::All();
+    $clasificaciones = DomClasificacion::All();
+    $unidades        = DomFaculty::All();
+    $sedes           = DomSede::All();
+    $actividades     = DomActivity::All();
+    $currencies      = Currency::All();
+    $carreras        = DomCareer::All();
+    $cgestiones      = CGestion::All();
+
+    //futura mejora de eficiencia:
+    $e = explode('-',$form->fecha_ida);
+    $r =array_reverse($e);
+    $dates[0]= implode('-',$r);
+    $e = explode('-',$form->fecha_retorno);
+    $r =array_reverse($e);
+    $dates[1]= implode('-',$r);
+    $ida_retorno = implode(' / ', $dates );
+    //--
+
+
+
+  	return view('form_internal.reciclar')->with('countries',$countries)
+                                      ->with('cargos',$cargos)
+                                      ->with('clasis',$clasificaciones)
+                                      ->with('unidades',$unidades)
+                                      ->with('sedes',$sedes)
+                                      ->with('actividades',$actividades)
+                                      ->with('divisas',$currencies)
+                                      ->with('carreras',$carreras)
+                                      ->with('cgestion',$cgestiones)
+                                      ->with('form',$form)
+                                      ->with('ida_retorno', $ida_retorno);
+
   }
 
   // Funcion para enviar datos de ciudades que pertenencen a un pais.
