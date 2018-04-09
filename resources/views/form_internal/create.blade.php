@@ -3,8 +3,8 @@
 @section('htmlheader_title', 'New Form')
 
 
-@section('contentheader_title', 'INTERNATIONAL VISIT REQUEST FORM - INTERNAL')
-@section('contentheader_description','Formulario de Visita internacional - Interno')
+@section('contentheader_title', 'FORMULARIO DE VISITA INTERNACIONAL - INTERNO')
+@section('contentheader_description','International Visit Request Form - Internal')
 
 @section('main-content')
 <div class="row">
@@ -13,12 +13,13 @@
     <div class="box">
     {!! Form::open(['id' => 'form1','route' => 'formin.store', 'method' => 'post']) !!}
       <div class="box-header header-form">
+          <p>Este formulario debe ser completado por cualquier académico y/o
+          administrativo UDD que visite una institución extranjera y cuyo
+        proposito sea una <b>actividad Académica.</b></p>
         <p>This form must be completed by any teacher and/or
           administrative UDD who visits a foreign institution and
           whose purpose is an <b>academic activity.</b></p>
-        <p>Este formulario debe ser completado por cualquier docente y/o
-          administrativo UDD que viiste una institución extranjera y cuyo
-        proposito sea una <b>actividad Académica.</b></p>
+
 
           <div class="pull-left">
 
@@ -47,7 +48,7 @@
         {{ csrf_field() }}
         <div id="form-content">
 
-          <h5> Professor details<br>(Información del profesor)</h5>
+          <h5>Información del profesor<br>(Professor details)</h5>
           <section>
             <!-- panel izquierdo -->
             <div class="col-md-6">
@@ -64,9 +65,9 @@
 
               <div class="form-group">
                 <label for="nombre" class="control-label">
-                  Name of Academic UDD
+                  Nombre del Académico UDD
                   <br>
-                  (Nombre del Académico UDD)
+                  (Name of Academic UDD)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                   <input id="nombre" type="text" class="form-control" name="nombre"  required placeholder="Jhon J. Doe">
@@ -83,18 +84,18 @@
 
               <div class="form-group col-sm-6">
                 <label for="telefono" class="control-label">
-                  Phone number
+                    Número telefónico
                   <br>
-                  (Número telefónico)
+                  (Phone number)
                 </label>
                 <input name=telefono class="form-control phone" type="text">
               </div>
 
               <div class="form-group">
                 <label for="unidad" class="control-label">
-                  Faculty or other UDD
+                    Facultad u otra Unidad UDD
                   <br>
-                  (Facultad u otra Unidad UDD)
+                  (Faculty or other UDD)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 {!!Form::select('unidad', $unidades->pluck('unidad','id'), null,['placeholder'=>'Seleccione una unidad','class' => 'form-control select2' ,'required', 'id'=>'unidades'])!!}
@@ -120,9 +121,9 @@
 
               <div class="form-group">
                 <label for="cargo" class="control-label">
-                  Position
+                  Cargo
                   <br>
-                  (Cargo)
+                  (Position)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 {!!Form::select('cargo', $cargos->pluck('cargo','id'), null,['placeholder'=>'Selecione un cargo','class' => 'form-control select2' ,'required', 'id'=>'cargo'])!!}
@@ -130,9 +131,9 @@
 
               <div class="form-group">
                 <label for="carreras" class="control-label">
-                  Study Plan
+                  Carrera a la que pertenece
                   <br>
-                  (Carrera a la que pertenece)
+                  (Study Plan)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 {!!Form::select('carreras', $carreras->pluck('carrera','id'), null,['placeholder'=>'Seleccione una carrera','class' => 'form-control select2' ,'required', 'id'=>'carreras'])!!}
@@ -155,7 +156,7 @@
 
           </section>
 
-          <h5>Hosting institution detail <br> (Detalles de la Institución)</h5>
+          <h5>Detalles de la Institución <br>(Hosting institution detail)</h5>
           <section>
 
             <!-- panel izquierdo -->
@@ -163,9 +164,9 @@
 
               <div class="form-group">
                 <label for="inst_anf" class="control-label">
-                  Name of host Institution
+                    Nombre de la Institución anfitriona
                   <br>
-                  (Nombre de la Institución anfitriona)
+                  (Name of host Institution)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 <input id="inst_anf" type="text" class="form-control" name="inst_anf"  required placeholder="University of Arizona">
@@ -173,18 +174,18 @@
 
               <div class="form-group">
                 <label for="website" class="control-label">
-                  Website
+                  Página web
                   <br>
-                  (Pagina web)
+                  (Website)
                 </label>
                 <input id='website' type="text" class="form-control" name="website" placeholder="www.example.cl">
               </div>
 
               <div class="form-group col-sm-6">
                 <label for="pais" class="control-label">
-                  Country
+                  País
                   <br>
-                  (País)
+                  (Country)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                   {!!Form::select('pais', $countries->pluck('pais','id'), null,['placeholder'=>'Selecciona un País','class' => 'form-control  select2' ,'required', 'id'=>'countries'])!!}
@@ -192,9 +193,9 @@
 
               <div class="form-group col-sm-6">
                 <label for="cities" class="control-label">
-                  City or State
+                  Ciudad o Estado
                   <br>
-                  (Ciudad o Estado)
+                  (City or State)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                   <select  id="cities" class="form-control select2" name="cities"></select>
@@ -202,16 +203,18 @@
 
               <div class="form-group">
                 <label for="inst_descripcion" class="control-label">
-                  Please provide a brief description of the host institution<br>
-                  (Proporcione una breve descripcion de la institución que visita)
+                  Proporcione una breve descripcion de la institución que visita
+                  <br>
+                  (Please provide a brief description of the host institution)
                 </label>
                 <textarea id="comentarios" class="form-control" rows="2" name="inst_descripcion"></textarea>
               </div>
 
               <div class="form-group">
                 <label class="control-label">
-                  Date of visit <br>
-                  (Fecha de visita)
+                  Fecha de visita
+                  <br>
+                  (Date of visit)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 <div class="input-group date">
@@ -229,46 +232,22 @@
             <!-- panel derecho -->
             <div class="col-md-6">
 
-              <!--
-              <div class="form-group col-sm-6">
-    						<label class="control-label">Date of visit <br>(Fecha de visita)
-                <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
-              </label>
-    						<div class="input-group date infecha">
-    							<div class="input-group-addon">
-    								<i class="fa fa-calendar"></i>
-    							</div>
-    							<input id="datepicker_ida" type="text" class="form-control datepicker pull-right" required name="fechaida">
-    						</div>
-    					</div>
 
-              <div class="form-group col-sm-6">
-    						<label class="control-label">Date of return<br>(Fecha de Retorno)
-                <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
-              </label>
-
-    						<div class="input-group date infecha">
-    							<div class="input-group-addon">
-    								<i class="fa fa-calendar"></i>
-    							</div>
-    							<input id="datepicker_retorno" type="text" class="form-control  datepicker pull-right" required name="fecharetorno">
-    						</div>
-    					</div>
-            -->
             <div class="form-group">
               <label for="actividad_nombre" class="control-label">
-                Name of Activity
+                 Nombre de la actividad
                 <br>
-                (Nombre de la actividad)
+                (Name of Activity)
               </label>
               <input name="actividad_nombre" class="form-control"  type="text">
             </div>
 
               <div class="form-group">
                 <label for="actividad" class="control-label">
-                  Type of activity to perform during your visit
+                  Tipo de actividad a realizar en us visita
                   <br>
-                  (Tipo de actividad a realizar en us visita)
+                  (Type of activity to perform during your visit)
+
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 {!!Form::select('actividad', $actividades->pluck('actividad','id'), null,['placeholder'=>'Seleccione una actividad','class' => 'form-control select2' ,'required', 'id'=>'actividades'])!!}
@@ -290,9 +269,9 @@
 
               <div class="form-group">
                 <label for="clasis" class="control-label">
-                  Select a rating area of your visita
+                  Seleccione un aréa de clasificación de su visita
                   <br>
-                  (Seleccione un aréa de clasificación de su visita)
+                  (Select a rating area of your visita)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 {!!Form::select('clasis', $clasis->pluck('clasificacion','id'), null,['placeholder'=>'Selecione una opción','class' => 'form-control select2' ,'required', 'id'=>'clasificacion'])!!}
@@ -300,9 +279,9 @@
 
               <div class="form-group">
                 <label for="proposito" class="control-label">
-                  What is the main purpose of your visit and what are the desired outcomes?
+                  ¿Cuál es el proposito principal de su visita, cuáles son los resultados esperados?
                   <br>
-                  (¿Cuál es el proposito principal de su visita, cuáles son los resultados esperados?)
+                  (What is the main purpose of your visit and what are the desired outcomes?)
                 </label>
                 <textarea id="proposito" class="form-control" rows="2" name="proposito"></textarea>
               </div>
@@ -317,42 +296,44 @@
           <!-- ./tab panel 2 -->
 
           <!-- tab panel 3 -->
-          <h5>Existing Relationships<br>(Relaciones Existentes) </h5>
+          <h5>Relaciones Existentes<br>(Existing Relationships) </h5>
           <section>
 
             <!-- panel izquierdo -->
             <div class="col-sm-6">
-              <b>Contact at foreign institution (Contacto en la insititución) </b>
+              <b>Contacto en la insititución (Contact at foreign institution)</b>
               <div class="form-group">
                 <label for="contacto_anf" class="control-label">
-                  Name
+                  Nombre
                   <br>
-                  (Nombre)
+                  (Name)
                 </label>
                 <input  name="contacto_anf" class="form-control" placeholder="Jhon J. Doe" type="text">
               </div>
 
               <div class="form-group">
                 <label for="cargo_anf" class="control-label">
-                  Position
+                  Cargo
                   <br>
-                  (Cargo)
+                  (Position)
                 </label>
                 <input name="cargo_anf"class="form-control"  type="text">
               </div>
 
               <div class="form-group col-sm-6">
                 <label for="email_anf" class="control-label">
-                  Email<br>
-                  (Correo electrónico)
+                  Correo Electrónico
+                  <br>
+                  (Email)
                 </label>
                 <input id='email_anf' type="email" class="form-control" name="email_anf" placeholder="email@example.com">
               </div>
 
               <div class="form-group col-sm-6">
                 <label for="fono_anf" class="control-label">
-                  Phone number<br>
-                  (Número telefónico)
+                  Número telefónico
+                  <br>
+                  (Phone number)
                 </label>
                 <input id='fono_anf' type="text" class="form-control" name="fono_anf">
               </div>
@@ -371,7 +352,7 @@
           </section>
 
           <!-- tab panel 4 -->
-          <h5>Others<br>(Otros)</h5>
+          <h5>Otros<br>(Others)</h5>
           <section>
 
             <!--panel izquierdo-->
@@ -379,18 +360,18 @@
 
               <div class="form-group">
                 <label for="colaboracion" class="control-label">
-                  Does the host institution have any existing agreements or other kinds of collaboration with UDD, please specify.
+                  ¿Tiene la institutión anfitriona acuerdos o algún otro tipo de colaboración conal UDD?, por favor especifique.
                   <br>
-                  (¿Tiene la institutión anfitriona acuerdos o algún otro tipo de colaboración conal UDD?, por favor especifique).
+                  (Does the host institution have any existing agreements or other kinds of collaboration with UDD?, please specify.)
                 </label>
                 <textarea class="form-control" rows="3" name="colaboracion"></textarea>
               </div>
 
               <div class="form-group">
                 <label for="observaciones" class="control-label">
-                  Comments
+                  Observaciones
                   <br>
-                  (Observaciones)
+                  (Comments)
                 </label>
                 <textarea class="form-control" rows="3" name="observaciones"></textarea>
               </div>
@@ -402,9 +383,9 @@
 
               <div class="form-group">
                 <label for="aportes" class="control-label">
-                  Contribution detail requested
+                  Detalle del aporte solicitado
                   <br>
-                  (Detalle del aporte solicitado)
+                  (Contribution detail requested)
                 </label>
                 <div class="table-responsive no-padding">
                 <table id="aporte" class="table table-bordered">
@@ -525,16 +506,6 @@
 
 
         </div>
-      <!-- </div> -->
-      <!-- /.box-body -->
-      <!-- box-footer
-     <div class="box-footer">
-        <ul class="">
-          <li class="pull-left "><a href="{{ route('formin.index') }}" class="btn btn-default">Cancelar</a></li>
-          <li class="pull-right" ><button type="submit" class="btn btn-primary">Enviar</button></li>
-        </ul>
-      </div>
-    /.box-footer -->
     {!! Form::close() !!}
     </div>
 

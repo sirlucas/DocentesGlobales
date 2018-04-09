@@ -34,6 +34,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('formin/getCareer','FormulariosInController@getCarrer');
     Route::get('formin/{id}/reciclar', 'FormulariosInController@reciclar')->name('formin/reciclar');
     Route::resource('formin','FormulariosInController');
+    Route::resource('formex','FormulariosExController');
 
 
 });

@@ -3,23 +3,23 @@
 @section('htmlheader_title', 'Edit Form')
 
 
-@section('contentheader_title', 'INTERNATIONAL VISIT REQUEST FORM - INTERNAL (Edit View)')
-@section('contentheader_description','Formulario de Visita internacional - Interno (Vista de Edición)')
+
+@section('contentheader_title', 'FORMULARIO DE VISITA INTERNACIONAL - INTERNO (Vista Editar)')
+@section('contentheader_description','International Visit Request Form - Internal (Edit view)')
 
 @section('main-content')
 <div class="row">
   <div class="col-md-12">
     <!-- 5orizontal Form -->
     <div class="box">
-    {{ Form::model($form, array('route' => array('formin.update', $form->id), 'method' => 'PUT', 'id' => 'form1')) }}
+      {!! Form::open(['id' => 'form1','route' => 'formin.store', 'method' => 'post']) !!}
       <div class="box-header header-form">
+         <p>Este formulario debe ser completado por cualquier académico y/o
+          administrativo UDD que visite una institución extranjera y cuyo
+        proposito sea una <b>actividad Académica.</b></p>
         <p>This form must be completed by any teacher and/or
           administrative UDD who visits a foreign institution and
           whose purpose is an <b>academic activity.</b></p>
-        <p>Este formulario debe ser completado por cualquier docente y/o
-          administrativo UDD que viiste una institución extranjera y cuyo
-        proposito sea una <b>actividad Académica.</b></p>
-
           <div class="pull-left">
 
 
@@ -47,7 +47,7 @@
         {{ csrf_field() }}
         <div id="form-content">
 
-          <h5> Professor details<br>(Información del profesor)</h5>
+          <h5>Información del profesor<br>(Professor details)</h5>
           <section>
             <!-- panel izquierdo -->
             <div class="col-md-6">
@@ -64,9 +64,9 @@
 
               <div class="form-group">
                 <label for="nombre" class="control-label">
-                  Name of Academic UDD
+                  Nombre del Académico UDD
                   <br>
-                  (Nombre del Académico UDD)
+                  (Name of Academic UDD)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                   {!! Form::text('nombre',$form->nombre,['class' => 'form-control', 'required', 'placeholder'=>'Jhon J. Doe', 'id'=>'nombre']) !!}
@@ -83,18 +83,18 @@
 
               <div class="form-group col-sm-6">
                 <label for="telefono" class="control-label">
-                  Phone number
+                  Número telefónico
                   <br>
-                  (Número telefónico)
+                  (Phone number)
                 </label>
                 {!! Form::text('telefono',$form->telefono,['class' => 'form-control phone', 'placeholder'=>'987654321', 'id'=>'telefono']) !!}
               </div>
 
               <div class="form-group">
                 <label for="unidad" class="control-label">
-                  Faculty or other UDD
+                  Facultad u otra Unidad UDD
                   <br>
-                  (Facultad u otra Unidad UDD)
+                  (Faculty or other UDD)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 {!!Form::select('unidad', $unidades->pluck('unidad','id'), $form->unidad->id,['placeholder'=>'Seleccione una unidad','class' => 'form-control select2' ,'required', 'id'=>'unidades'])!!}
@@ -120,9 +120,9 @@
 
               <div class="form-group">
                 <label for="cargo" class="control-label">
-                  Position
+                  Cargo
                   <br>
-                  (Cargo)
+                  (Position)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 {!!Form::select('cargo', $cargos->pluck('cargo','id'), $form->cargo->id,['placeholder'=>'Selecione un cargo','class' => 'form-control select2' ,'required', 'id'=>'cargo'])!!}
@@ -130,9 +130,9 @@
 
               <div class="form-group">
                 <label for="carreras" class="control-label">
-                  Study Plan
+                  Carrera a la que pertenece
                   <br>
-                  (Carrera a la que pertenece)
+                  (Study Plan)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 {!!Form::select('carreras', $carreras->pluck('carrera','id'), $form->carrera->id,['placeholder'=>'Seleccione una carrera','class' => 'form-control select2' ,'required', 'id'=>'carreras'])!!}
@@ -156,7 +156,7 @@
 
           </section>
 
-          <h5>Hosting institution detail <br> (Detalles de la Institución)</h5>
+          <h5>Detalles de la Institución <br>(Hosting institution detail)</h5>
           <section>
 
             <!-- panel izquierdo -->
@@ -164,9 +164,9 @@
 
               <div class="form-group">
                 <label for="inst_anf" class="control-label">
-                  Name of host Institution
+                  Nombre de la Institución anfitriona
                   <br>
-                  (Nombre de la Institución anfitriona)
+                  (Name of host Institution)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 {!! Form::text('inst_anf',$form->institucion_anf,['class' => 'form-control', 'placeholder'=>'University - Example', 'required', 'id'=>'inst_anf']) !!}
@@ -174,18 +174,18 @@
 
               <div class="form-group">
                 <label for="website" class="control-label">
-                  Website
+                  Página web
                   <br>
-                  (Pagina web)
+                  (Website)
                 </label>
                 {!! Form::text('website',$form->website,['class' => 'form-control', 'placeholder'=>'https://www.example.cl', 'id'=>'website']) !!}
               </div>
 
               <div class="form-group col-sm-6">
                 <label for="pais" class="control-label">
-                  Country
+                  País
                   <br>
-                  (País)
+                  (Country)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                   {!!Form::select('pais', $countries->pluck('pais','id'), $form->ciudad->pais->id,['placeholder'=>'Selecciona un País','class' => 'form-control  select2' ,'required', 'id'=>'countries'])!!}
@@ -193,9 +193,9 @@
 
               <div class="form-group col-sm-6">
                 <label for="cities" class="control-label">
-                  City or State
+                  Ciudad o Estado
                   <br>
-                  (Ciudad o Estado)
+                  (City or State)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                   <select  id="cities" class="form-control select2" name="cities">
@@ -205,23 +205,25 @@
 
               <div class="form-group">
                 <label for="inst_descripcion" class="control-label">
-                  Please provide a brief description of the host institution<br>
-                  (Proporcione una breve descripcion de la institución que visita)
+                  Proporcione una breve descripcion de la institución que visita
+                  <br>
+                  (Please provide a brief description of the host institution)
                 </label>
                 {!! Form::textarea('inst_descripcion',$form->inst_descripcion,['class' => 'form-control', 'id'=>'comentarios', 'rows' => '2']) !!}
               </div>
 
               <div class="form-group">
                 <label class="control-label">
-                  Date of visit <br>
-                  (Fecha de visita)
+                  Fecha de visita
+                  <br>
+                  (Date of visit)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 <div class="input-group date">
                   <div class="input-group-addon">
                     <i class="fa fa-calendar"></i>
                   </div>
-                  {!! Form::text('ida_retorno',$ida_retorno,['class' => 'form-control', 'required', 'id'=>'ida_retorno']) !!}
+                  {!! Form::text('ida_retorno',null,['class' => 'form-control', 'required', 'id'=>'ida_retorno']) !!}
                 </div>
                 <!-- /.input group -->
               </div>
@@ -234,9 +236,9 @@
 
             <div class="form-group">
               <label for="actividad_nombre" class="control-label">
-                Name of Activity
+                Nombre de la actividad
                 <br>
-                (Nombre de la actividad)
+                (Name of Activity)
               </label>
               {!! Form::text('actividad_nombre',$form->actividad_nombre,['class' => 'form-control', 'required', 'id'=>'actividad_nombre']) !!}
             </div>
@@ -267,9 +269,9 @@
 
               <div class="form-group">
                 <label for="clasis" class="control-label">
-                  Select a rating area of your visita
+                  Seleccione un aréa de clasificación de su visita
                   <br>
-                  (Seleccione un aréa de clasificación de su visita)
+                  (Select a rating area of your visita)
                   <span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                 </label>
                 {!!Form::select('clasis', $clasis->pluck('clasificacion','id'), $form->clasificacion->id,['placeholder'=>'Selecione una opción','class' => 'form-control select2' ,'required', 'id'=>'clasificacion'])!!}
@@ -277,9 +279,9 @@
 
               <div class="form-group">
                 <label for="proposito" class="control-label">
-                  What is the main purpose of your visit and what are the desired outcomes?
+                  ¿Cuál es el proposito principal de su visita, cuáles son los resultados esperados?
                   <br>
-                  (¿Cuál es el proposito principal de su visita, cuáles son los resultados esperados?)
+                  (What is the main purpose of your visit and what are the desired outcomes?)
                 </label>
                 {!! Form::textarea('proposito',$form->proposito,['class' => 'form-control','rows' => '2', 'id'=>'proposito']) !!}
               </div>
@@ -294,44 +296,46 @@
           <!-- ./tab panel 2 -->
 
           <!-- tab panel 3 -->
-          <h5>Existing Relationships<br>(Relaciones Existentes) </h5>
+          <h5>Relaciones Existentes<br>(Existing Relationships) </h5>
           <section>
 
             <!-- panel izquierdo -->
             <div class="col-sm-6">
-              <b>Contact at foreign institution (Contacto en la insititución) </b>
+              <b>Contacto en la insititución (Contact at foreign institution)</b>
               <div class="form-group">
                 <label for="contacto_anf" class="control-label">
-                  Name
+                  Nombre
                   <br>
-                  (Nombre)
+                  (Name)
                 </label>
-                {!! Form::text('contacto_anf',$form->contacto_anf,['class' => 'form-control','placeholder' => 'Jhon J. Doe', 'id'=>'contacto_anf']) !!}
+                <input  name="contacto_anf" class="form-control" placeholder="Jhon J. Doe" type="text">
               </div>
 
               <div class="form-group">
                 <label for="cargo_anf" class="control-label">
-                  Position
+                  Cargo
                   <br>
-                  (Cargo)
+                  (Position)
                 </label>
-                {!! Form::text('cargo_anf',$form->cargo_anf,['class' => 'form-control', 'id'=>'cargo_anf']) !!}
+                <input name="cargo_anf"class="form-control"  type="text">
               </div>
 
               <div class="form-group col-sm-6">
                 <label for="email_anf" class="control-label">
-                  Email<br>
-                  (Correo electrónico)
+                  Correo Electrónico
+                  <br>
+                  (Email)
                 </label>
-                {!! Form::email('email_anf',$form->email_anf,['class' => 'form-control','placeholder' => 'email@example.com', 'id'=>'email_anf']) !!}
+                <input id='email_anf' type="email" class="form-control" name="email_anf" placeholder="email@example.com">
               </div>
 
               <div class="form-group col-sm-6">
                 <label for="fono_anf" class="control-label">
-                  Phone number<br>
-                  (Número telefónico)
+                  Número telefónico
+                  <br>
+                  (Phone number)
                 </label>
-                {!! Form::text('fono_anf',$form->fono_anf,['class' => 'form-control', 'id'=>'fono_anf']) !!}
+                <input id='fono_anf' type="text" class="form-control" name="fono_anf">
               </div>
 
             </div>
@@ -348,7 +352,7 @@
           </section>
 
           <!-- tab panel 4 -->
-          <h5>Others<br>(Otros)</h5>
+          <h5>Otros<br>(Others)</h5>
           <section>
 
             <!--panel izquierdo-->
@@ -356,20 +360,20 @@
 
               <div class="form-group">
                 <label for="colaboracion" class="control-label">
-                  Does the host institution have any existing agreements or other kinds of collaboration with UDD, please specify.
+                  ¿Tiene la institutión anfitriona acuerdos o algún otro tipo de colaboración conal UDD?, por favor especifique.
                   <br>
-                  (¿Tiene la institutión anfitriona acuerdos o algún otro tipo de colaboración conal UDD?, por favor especifique).
+                  (Does the host institution have any existing agreements or other kinds of collaboration with UDD?, please specify.)
                 </label>
-                {!! Form::textarea('colaboracion',$form->colaboracion,['class' => 'form-control','rows' => '3', 'id'=>'colaboracion']) !!}
+                <textarea class="form-control" rows="3" name="colaboracion"></textarea>
               </div>
 
               <div class="form-group">
                 <label for="observaciones" class="control-label">
-                  Comments
+                  Observaciones
                   <br>
-                  (Observaciones)
+                  (Comments)
                 </label>
-                {!! Form::textarea('observaciones',$form->observaciones,['class' => 'form-control','rows' => '3', 'id'=>'observaciones']) !!}
+                <textarea class="form-control" rows="3" name="observaciones"></textarea>
               </div>
 
             </div>
@@ -379,9 +383,9 @@
 
               <div class="form-group">
                 <label for="aportes" class="control-label">
-                  Contribution detail requested
+                  Detalle del aporte solicitado
                   <br>
-                  (Detalle del aporte solicitado)
+                  (Contribution detail requested)
                 </label>
                 <div class="table-responsive no-padding">
                 <table id="aporte" class="table table-bordered">
