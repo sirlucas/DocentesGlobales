@@ -34,6 +34,7 @@ class FormulariosInController extends Controller
   /* @param  StoreBlogPostRequest  $request */
   public function index()
   {
+
     $forms = FormularioIn::All();
 
       return view('form_internal.index',compact('forms'));
@@ -173,7 +174,7 @@ class FormulariosInController extends Controller
       }
       if($account->pivot->account_id == 2){
         $arancel = $account;
-        $divisa = $arancel->pivot->currency_id;
+        //$divisa = $arancel->pivot->currency_id;
 
       }
       if($account->pivot->account_id == 3){

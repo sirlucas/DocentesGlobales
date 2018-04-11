@@ -284,25 +284,25 @@
         <tbody>
           <tr>
             @if($pasajes != null && $viaticos != null && $inscripcion != null)
-            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$pasajes->currency[0]->isocode}}</td>
-            <td class="pas">{{$pasajes->currency[0]->cursymbol}}{{$pasajes->pivot->monto}}.-</td>
-            <td class="via">{{$viaticos->currency[0]->cursymbol}}{{$viaticos->pivot->monto}}.-</td>
-            <td class="ins">{{$inscripcion->currency[0]->cursymbol}}{{$inscripcion->pivot->monto}}.-</td>
+            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$curr[($pasajes->pivot->currency_id)-1]->currency}}</td>
+            <td class="pas">{{$curr[($pasajes->pivot->currency_id)-1]->cursymbol}}{{$pasajes->pivot->monto}}.-</td>
+            <td class="via">{{$curr[($viaticos->pivot->currency_id)-1]->cursymbol}}{{$viaticos->pivot->monto}}.-</td>
+            <td class="ins">{{$curr[($inscripcion->pivot->currency_id)-1]->cursymbol}}{{$inscripcion->pivot->monto}}.-</td>
             @elseif($pasajes != null)
-            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$pasajes->currency[0]->isocode}}</td>
-            <td class="pas">{{$pasajes->currency[0]->cursymbol}}{{$pasajes->pivot->monto}}.-</td>
+            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$curr[($pasajes->pivot->currency_id)-1]->isocode}}</td>
+            <td class="pas">{{$curr[($pasajes->pivot->currency_id)-1]->cursymbol}}{{$pasajes->pivot->monto}}.-</td>
             <td class="via"></td>
             <td class="ins"></td>
             @elseif($viaticos != null)
-            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$viaticos->currency[0]->isocode}}</td>
+            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$curr[($viaticos->pivot->currency_id)-1]->isocode}}</td>
             <td class="pas"></td>
-            <td class="via">{{$viaticos->currency[0]->cursymbol}}{{$viaticos->pivot->monto}}.-</td>
+            <td class="via">{{$curr[($viaticos->pivot->currency_id)-1]->cursymbol}}{{$viaticos->pivot->monto}}.-</td>
             <td class="ins"></td>
             @elseif($inscripcion != null)
-            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$inscripcion->currency[0]->isocode}}</td>
+            <td class="desc"><h3>Monto</h3>Montos en divisa: {{$curr[($inscripcion->pivot->currency_id)-1]->isocode}}</td>
             <td class="pas"></td>
             <td class="via"></td>
-            <td class="ins">{{$inscripcion->currency[0]->cursymbol}}{{$inscripcion->pivot->monto}}.-</td>
+            <td class="ins">{{$curr[($inscripcion->pivot->currency_id)-1]->cursymbol}}{{$inscripcion->pivot->monto}}.-</td>
             @else
             <td class="desc"><h3>Monto</h3>Montos en divisa: </td>
             <td class="pas"></td>

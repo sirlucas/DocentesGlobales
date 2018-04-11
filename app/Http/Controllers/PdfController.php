@@ -31,10 +31,14 @@ class PdfController extends Controller
   public function ddca(Request $request){
     $id = $request->getQueryString();
     $form = FormularioIn::find($id);
+    $cgestion = CGestion::All();
+    $currency = Currency::All();
     $created_at = explode(' ', $form->created_at );
     $date = date('d-m-Y');
     $doc_id = str_pad($id, 6,'0', STR_PAD_LEFT);
-    $pdf = PDF::loadView('Form_internal.formsPDF.ddca', ['created_at'=>$created_at,'formulario' => $form, 'date' => $date, 'doc_id' => $doc_id]);
+    $pdf = PDF::loadView('Form_internal.formsPDF.ddca', ['created_at'=>$created_at,
+        'formulario' => $form, 'date' => $date, 'doc_id' => $doc_id,
+        'c_gestion' => $cgestion, 'curr' => $currency]);
     return $pdf->stream('ddcaForm'.$doc_id.'.pdf');
   }
 
@@ -61,6 +65,7 @@ class PdfController extends Controller
   public function facultad(Request $request){
     $id = $request->getQueryString();
     $form = FormularioIn::find($id);
+    $cur = Currency::All();
     $pasajes = null;
     $viaticos = null;
     $inscripcion = null;
@@ -83,7 +88,8 @@ class PdfController extends Controller
     $doc_id = str_pad($id, 6,'0', STR_PAD_LEFT);
     $pdf = PDF::loadView('Form_internal.formsPDF.facultad', ['created_at'=>$created_at,
                          'formulario' => $form, 'date' => $date, 'doc_id' => $doc_id,
-                         'viaticos' => $viaticos, 'pasajes' => $pasajes, 'inscripcion' => $inscripcion]);
+                         'viaticos' => $viaticos, 'pasajes' => $pasajes,
+                         'inscripcion' => $inscripcion, 'curr' => $cur]);
     return $pdf->stream('facultadForm'.$doc_id.'.pdf');
   }
 

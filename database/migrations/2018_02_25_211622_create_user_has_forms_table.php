@@ -16,8 +16,8 @@ class CreateUserHasFormsTable extends Migration
         Schema::create('user_has_forms', function (Blueprint $table) {
           $table->increments('id');
           $table->boolean('status');
-          $table->integer('formulario_in__id')->unsigned();
-          $table->foreign('formulario_id')->references('id')->on('formularios');
+          $table->integer('formulario_in_id')->unsigned();
+          $table->foreign('formulario_in_id')->references('id')->on('formularios');
           $table->integer('user_id')->unsigned();
           $table->foreign('user_id')->references('id')->on('users');
           $table->timestamps();

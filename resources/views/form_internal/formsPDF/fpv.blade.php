@@ -344,8 +344,8 @@
               <tfoot>
                 <tr>
                   @if(is_object($cuentas))
-                  <td class="service" colspan="2">MONTO TOTAL:(*)<br> <small>Divisa: {{$cuentas->currency[0]->isocode}}</small> </td>
-                  <td class="cent">{{$cuentas->currency[0]->cursymbol}}{{$cuentas->pivot->monto}}.- </td>
+                  <td class="service" colspan="2">MONTO TOTAL:(*)<br> <small>Divisa: {{$cuentas->currency[$cuentas->pivot->currency_id]->currency}}</small> </td>
+                  <td class="cent">{{$cuentas->currency[$cuentas->pivot->currency_id]->cursymbol}}{{$cuentas->pivot->monto}}.- </td>
                   @else
                   <td class="service" colspan="2">MONTO TOTAL:(*)<br> <small>Divisa: </small> </td>
                   <td class="cent"> </td>

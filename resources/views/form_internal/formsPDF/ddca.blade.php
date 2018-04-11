@@ -388,11 +388,13 @@
 
             <tbody>
               @if($formulario->account->count() > 0)
+
               @foreach($formulario->account as $account)
+              {{$account->pivot->c_gestion_id}}
               <tr>
                 <td class="desc" >{{$account->cuenta}}</td>
-                <td class="desc">{{$account->currency[0]->cursymbol}}{{$account->pivot->monto}}.-</td>
-                <td class="desc">{{$account->cgestion[0]->cgestion}}</td>
+                <td class="desc">{{$curr[($account->pivot->currency_id)-1]->cursymbol}}{{$account->pivot->monto}}.-</td>
+                <td class="desc">{{$c_gestion[($account->pivot->c_gestion_id)-1]->cgestion}}</td>
               </tr>
               @endforeach
               @else

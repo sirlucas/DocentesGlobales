@@ -28,8 +28,9 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
+      
         return view('adminlte::auth.login');
     }
 

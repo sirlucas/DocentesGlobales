@@ -17,6 +17,13 @@
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     ),
   ),
+  'kingstarter/laravel-saml' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'KingStarter\\LaravelSaml\\LaravelSamlServiceProvider',
+    ),
+  ),
   'laravel/tinker' => 
   array (
     'providers' => 
