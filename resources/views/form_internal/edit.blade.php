@@ -12,7 +12,7 @@
   <div class="col-md-12">
     <!-- 5orizontal Form -->
     <div class="box">
-      {!! Form::open(['id' => 'form1','route' => 'formin.store', 'method' => 'post']) !!}
+      {{ Form::model($form, array('route' => array('formin.update', $form->id), 'method' => 'PUT','id' => 'form1')) }}
       <div class="box-header header-form">
          <p>Este formulario debe ser completado por cualquier académico y/o
           administrativo UDD que visite una institución extranjera y cuyo
