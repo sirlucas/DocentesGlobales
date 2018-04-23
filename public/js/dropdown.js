@@ -164,7 +164,7 @@ $(document).ready(function(){
         },
         proposito:{
           required: false,
-          maxlength: 200,
+          maxlength: 300,
         },
         contacto_anf: {
           required: false,
@@ -187,6 +187,30 @@ $(document).ready(function(){
         },
         colaboracion:{
           maxlength: 200,
+        },
+        matricula:{
+          maxlength: 8,
+          digits: true,
+        },
+        arancel:{
+          maxlength: 8,
+          digits: true,
+        },
+        viaticos:{
+          maxlength: 8,
+          digits: true,
+        },
+        pasajes:{
+          maxlength: 8,
+          digits: true,
+        },
+        otros:{
+          maxlength: 8,
+          digits: true,
+        },
+        total:{
+          maxlength: 8,
+          digits: true,
         },
     },
     messages:{
@@ -286,6 +310,30 @@ $(document).ready(function(){
         colaboracion:{
           maxlength: "El nombe debe tener menos de 50 caracteres",
         },
+        matricula:{
+          maxlength: "No puede Ingresar un valor mayo a 99.999.999",
+          digits: "Ingrese solo números",
+        },
+        arancel:{
+          maxlength: "No puede Ingresar un valor mayo a 99.999.999",
+          digits: "Ingrese solo números",
+        },
+        viaticos:{
+          maxlength: "No puede Ingresar un valor mayo a 99.999.999",
+          digits: "Ingrese solo números",
+        },
+        pasajes:{
+          maxlength: "No puede Ingresar un valor mayo a 99.999.999",
+          digits: "Ingrese solo números",
+        },
+        otros:{
+          maxlength: "No puede Ingresar un valor mayo a 99.999.999",
+          digits: "Ingrese solo números",
+        },
+        total:{
+          maxlength: "No puede Ingresar un valor mayo a 99.999.999",
+          digits: "Ingrese solo números",
+        },
     },
     errorElement: "em",
     errorPlacement: function ( error, element ) {
@@ -311,7 +359,6 @@ $(document).ready(function(){
   $("#form-content").steps({
     headerTag: "h5",
     bodyTag: "section",
-    transitionEffect: "slideLeft",
     autoFocus: true,
     enableCancelButton: false,
     labels: {
@@ -351,8 +398,12 @@ $(document).ready(function(){
     // Triggered when clicking the Finish button
     onFinishing: function(e, currentIndex) {
       var form = $("#form1");
+
+      if (form.valid()){
       form.submit();
-      return true
+      return true;
+      }
+
     },
     // Triggered whe clicking the Finish button
     onFinished: function(e, currentIndex) {

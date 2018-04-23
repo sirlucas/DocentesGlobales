@@ -76,17 +76,17 @@ class FormularioIn extends Model
 
   public function cgestion(){
         return $this->belongsToMany('App\CGestion','outlays')
-            ->withPivot('currency_id','account_id','monto');
+            ->withPivot('currency_id','account_id','monto')->withTimestamps();
     }
 
   public function currency(){
       return $this->belongsToMany('App\Currency','outlays')
-          ->withPivot('c_gestion_id','account_id','monto');
+          ->withPivot('c_gestion_id','account_id','monto')->withTimestamps();
   }
 
   public function account(){
       return $this->belongsToMany('App\Account','outlays')
-          ->withPivot('currency_id','c_gestion_id','monto');
+          ->withPivot('currency_id','c_gestion_id','monto')->withTimestamps();
   }
 
   //relacion many yo many con tabla pivote user_has_forms, con almacenamiento de fecha

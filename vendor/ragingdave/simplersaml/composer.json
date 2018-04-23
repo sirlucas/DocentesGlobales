@@ -1,0 +1,22 @@
+{
+    "name": "ragingdave/simplersaml",
+    "description": "Allows Simpler integration of SimpleSAML and Laravel.",
+    "keywords": [ "laravel", "illuminate", "simplesaml", "saml" ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Cox Jr.",
+            "email": "davemc08@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "RagingDave\\SimplerSaml\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}

@@ -25,10 +25,10 @@
     21 => 'Illuminate\\View\\ViewServiceProvider',
     22 => 'Barryvdh\\DomPDF\\ServiceProvider',
     23 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    24 => 'KingStarter\\LaravelSaml\\LaravelSamlServiceProvider',
+    24 => 'Collective\\Html\\HtmlServiceProvider',
     25 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    26 => 'Collective\\Html\\HtmlServiceProvider',
-    27 => 'Yajra\\DataTables\\DataTablesServiceProvider',
+    26 => 'Yajra\\DataTables\\DataTablesServiceProvider',
+    27 => 'Creativeorange\\Gravatar\\GravatarServiceProvider',
     28 => 'App\\Providers\\AppServiceProvider',
     29 => 'App\\Providers\\AuthServiceProvider',
     30 => 'App\\Providers\\EventServiceProvider',
@@ -51,8 +51,8 @@
     9 => 'Illuminate\\View\\ViewServiceProvider',
     10 => 'Barryvdh\\DomPDF\\ServiceProvider',
     11 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
-    12 => 'KingStarter\\LaravelSaml\\LaravelSamlServiceProvider',
-    13 => 'Yajra\\DataTables\\DataTablesServiceProvider',
+    12 => 'Yajra\\DataTables\\DataTablesServiceProvider',
+    13 => 'Creativeorange\\Gravatar\\GravatarServiceProvider',
     14 => 'App\\Providers\\AppServiceProvider',
     15 => 'App\\Providers\\AuthServiceProvider',
     16 => 'App\\Providers\\EventServiceProvider',
@@ -158,11 +158,11 @@
     'translation.loader' => 'Illuminate\\Translation\\TranslationServiceProvider',
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
-    'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
     'html' => 'Collective\\Html\\HtmlServiceProvider',
     'form' => 'Collective\\Html\\HtmlServiceProvider',
     'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
     'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
   ),
   'when' => 
   array (
@@ -202,10 +202,10 @@
     'Illuminate\\Validation\\ValidationServiceProvider' => 
     array (
     ),
-    'Laravel\\Tinker\\TinkerServiceProvider' => 
+    'Collective\\Html\\HtmlServiceProvider' => 
     array (
     ),
-    'Collective\\Html\\HtmlServiceProvider' => 
+    'Laravel\\Tinker\\TinkerServiceProvider' => 
     array (
     ),
   ),

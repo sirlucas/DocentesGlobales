@@ -12,16 +12,16 @@ class Currency extends Model
 
   public function account(){
         return $this->belongsToMany('App\Account','outlays')
-            ->withPivot('c_gestion_id','formulario_in_id','monto');
+            ->withPivot('c_gestion_id','formulario_in_id','monto')->withTimestamps();
     }
 
   public function cgestion(){
       return $this->belongsToMany('App\CGestion','outlays')
-          ->withPivot('account_id','formulario_in_id','monto');
+          ->withPivot('account_id','formulario_in_id','monto')->withTimestamps();
   }
 
   public function formulario(){
       return $this->belongsToMany('App\FormularioIn','outlays')
-          ->withPivot('account_id','c_gestion_id','monto');
+          ->withPivot('account_id','c_gestion_id','monto')->withTimestamps();
   }
 }

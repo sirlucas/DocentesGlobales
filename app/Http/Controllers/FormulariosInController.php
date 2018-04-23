@@ -248,38 +248,50 @@ class FormulariosInController extends Controller
            ]);
 
            $form = FormularioIn::find($id);
-           if ($request->get('matricula')) {
-             //account_id = 1 corresponde a matriculas
-            $form->account()->updateExistingPivot('1',['c_gestion_id'=>$request->get('cgestionm'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('matricula')]);
-          //  $form->cgestion()->sync($request->get('cgestionm'),['currency_id'=>$request->get('currency'),'account_id'=>'1', 'monto'=>$request->get('matricula')]);
-
+           if ($request->get('matricula') >= 0 ) {
+             /*account_id = 1 corresponde a matriculas
+             //si existe la cuenta matricula en la tabla pivote, lo edita (pudateExistingPivot devuelve 1 cuando edita y 0 cuando no)
+             //si no edita (porque la fila no existe, entonces hacemos un atach con el nuevo valor)*/
+             $flag = $form->account()->updateExistingPivot('1',['c_gestion_id'=>$request->get('cgestionm'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('matricula')]);
+             if($flag == 0 && $request->get('matricula') != null ){
+             $form->cgestion()->attach($request->get('cgestionm'),['currency_id'=>$request->get('currency'),'account_id'=>'1', 'monto'=>$request->get('matricula')]);
+             }
            }
-           if ($request->get('arancel')) {
+           if ($request->get('arancel') >= 0) {
              //account_id = 2 corresponde a arancel
-           $form->account()->updateExistingPivot('2',['c_gestion_id'=>$request->get('cgestiona'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('arancel')]);
-        //  $formularioin->cgestion()->sync($request->get('cgestiona'),['currency_id'=>$request->get('currency'), 'account_id'=>'2', 'monto'=>$request->get('arancel')]);
-
+            $flag = $form->account()->updateExistingPivot('2',['c_gestion_id'=>$request->get('cgestiona'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('arancel')]);
+            if($flag == 0 && $request->get('arancel') != null){
+              $form->cgestion()->attach($request->get('cgestiona'),['currency_id'=>$request->get('currency'),'account_id'=>'2', 'monto'=>$request->get('arancel')]);
+            }
            }
-           if ($request->get('pasajes')) {
+           if ($request->get('pasajes') >= 0) {
              //account_id = 3 corresponde a pasajes
-            $form->account()->updateExistingPivot('3',['c_gestion_id'=>$request->get('cgestionp'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('pasajes')]);
-
+            $flag = $form->account()->updateExistingPivot('3',['c_gestion_id'=>$request->get('cgestionp'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('pasajes')]);
+            if($flag == 0 && $request->get('pasajes') != null){
+              $form->cgestion()->attach($request->get('cgestionp'),['currency_id'=>$request->get('currency'),'account_id'=>'3', 'monto'=>$request->get('pasajes')]);
+            }
            }
-           if ($request->get('viaticos')) {
+           if ($request->get('viaticos') >= 0) {
              //account_id = 4 corresponde a viaticos
-             $form->account()->updateExistingPivot('4',['c_gestion_id'=>$request->get('cgestionv'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('viaticos')]);
-
+             $flag = $form->account()->updateExistingPivot('4',['c_gestion_id'=>$request->get('cgestionv'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('viaticos')]);
+             if($flag == 0 && $request->get('viaticos') != null){
+               $form->cgestion()->attach($request->get('cgestionv'),['currency_id'=>$request->get('currency'),'account_id'=>'4', 'monto'=>$request->get('viaticos')]);
+             }
            }
-           if ($request->get('otros')) {
+           if ($request->get('otros') >= 0) {
              //account_id = 5 corresponde a otros
-             $form->account()->updateExistingPivot('5',['c_gestion_id'=>$request->get('cgestiono'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('otros')]);
-
+             $flag = $form->account()->updateExistingPivot('5',['c_gestion_id'=>$request->get('cgestiono'),'currency_id'=>$request->get('currency'), 'monto'=>$request->get('otros')]);
+             if($flag == 0 && $request->get('otros') != null){
+               $form->cgestion()->attach($request->get('cgestiono'),['currency_id'=>$request->get('currency'),'account_id'=>'5', 'monto'=>$request->get('otros')]);
+             }
            }
-           if ($request->get('total')) {
+           if ($request->get('total') >= 0) {
              //account_id = 6 corresponde a total
              // c_gestion_id = 1 => "NO APLICA"
-             $form->account()->updateExistingPivot('6',['c_gestion_id'=>'1','currency_id'=>$request->get('currency'), 'monto'=>$request->get('total')]);
-
+             $flag = $form->account()->updateExistingPivot('6',['c_gestion_id'=>'1','currency_id'=>$request->get('currency'), 'monto'=>$request->get('total')]);
+             if($flag == 0 && $request->get('total') != null){
+               $form->cgestion()->attach($request->get('cgestiont'),['currency_id'=>$request->get('currency'),'account_id'=>'6', 'monto'=>$request->get('total')]);
+             }
            }
            return redirect()->route('formin.index')
                            ->with('success','Formulario Editado Correctamente.');

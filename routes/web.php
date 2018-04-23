@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group([true], function () {
     //    Route::get('/link1', function ()    {
 //        // Uses Auth Middleware
 //    });

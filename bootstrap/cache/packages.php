@@ -17,20 +17,6 @@
       0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     ),
   ),
-  'kingstarter/laravel-saml' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'KingStarter\\LaravelSaml\\LaravelSamlServiceProvider',
-    ),
-  ),
-  'laravel/tinker' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    ),
-  ),
   'laravelcollective/html' => 
   array (
     'providers' => 
@@ -43,6 +29,13 @@
       'Html' => 'Collective\\Html\\HtmlFacade',
     ),
   ),
+  'laravel/tinker' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    ),
+  ),
   'yajra/laravel-datatables-oracle' => 
   array (
     'providers' => 
@@ -52,6 +45,17 @@
     'aliases' => 
     array (
       'DataTables' => 'Yajra\\DataTables\\Facades\\DataTables',
+    ),
+  ),
+  'creativeorange/gravatar' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Creativeorange\\Gravatar\\GravatarServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Gravatar' => 'Creativeorange\\Gravatar\\Facades\\Gravatar',
     ),
   ),
 );

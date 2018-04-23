@@ -13,6 +13,7 @@
     <!-- 5orizontal Form -->
     <div class="box">
       {{ Form::model($form, array('route' => array('formin.update', $form->id), 'method' => 'PUT','id' => 'form1')) }}
+      {{ csrf_field() }}
       <div class="box-header header-form">
          <p>Este formulario debe ser completado por cualquier académico y/o
           administrativo UDD que visite una institución extranjera y cuyo
@@ -44,7 +45,7 @@
         @endif
 
 
-        {{ csrf_field() }}
+
         <div id="form-content">
 
           <h5>Información del profesor<br>(Professor details)</h5>
@@ -58,6 +59,7 @@
                     RUT<span class="fa fa-asterisk" style="font-size:8px;color:red"></span>
                   </label>
                   {!! Form::text('rut',$form->rut,['class' => 'form-control', 'required', 'placeholder'=>'112233-1', 'id'=>'rut']) !!}
+
               </div>
 
 
@@ -137,12 +139,16 @@
                 </label>
                 {!!Form::select('carreras', $carreras->pluck('carrera','id'), $form->carrera->id,['placeholder'=>'Seleccione una carrera','class' => 'form-control select2' ,'required', 'id'=>'carreras'])!!}
               </div>
-
+              @if ($form->postitulo)
+              <div id='postitulo' class="form-group">
+              @else
               <div id='postitulo' class="form-group hidden">
+              @endif
                 <label for="postitulo" class="control-label">
                   <br>
                   ¿Nombre del Programa de Estudio?
                 </label>
+
                 {!! Form::text('postitulo',$form->postitulo,['class' => 'form-control', 'placeholder'=>'Ingrese Postítulo al que pertenece', 'required', 'id'=>'postin']) !!}
 
               </div>
