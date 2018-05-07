@@ -19,7 +19,7 @@ class CreateFormulariosTable extends Migration
             $table->string('nombre',60);
             $table->string('rut',10);
             $table->string('email',50);
-            $table->integer('telefono')->nullable();
+            $table->string('telefono',11)->nullable();
             $table->integer('dom_cargo_id')->unsigned();
             $table->integer('dom_unidad_id')->unsigned();
             $table->integer('dom_carrera_id')->unsigned();
@@ -28,7 +28,7 @@ class CreateFormulariosTable extends Migration
 
             // datos institucion anfitriona
             $table->string('institucion_anf',100);
-            $table->string('inst_descripcion',150)->nullable();
+            $table->string('inst_descripcion',250)->nullable();
             $table->integer('dom_actividad_id')->unsigned();
             $table->integer('dom_ciudad_id')->unsigned();
             $table->string('website',100)->nullable();
@@ -41,14 +41,14 @@ class CreateFormulariosTable extends Migration
             $table->date('fecha_ida');
             $table->date('fecha_retorno');
             $table->integer('dom_clasificacion_id')->unsigned();
-            $table->string('proposito',200)->nullable(); //proposito de la visita
+            $table->string('proposito',300)->nullable(); //proposito de la visita
             //formulario DDCA
             $table->string('actividad_nombre',100)->nullable();
             $table->integer('duracion_act')->nullable();//duracion de la actividad en horas (si es menos de 100horas)
             $table->enum('ipt', ['Si','No','Por Ingresar']); //incluido en plan de trabajo?
             // otros campos
-            $table->string('observaciones',200)->nullable();
-            $table->string('colaboracion',200)->nullable();//colaboraiciones U. anfitriona con UDD
+            $table->string('observaciones',300)->nullable();
+            $table->string('colaboracion',300)->nullable();//colaboraiciones U. anfitriona con UDD
             $table->timestamps();
 
             $table->foreign('dom_cargo_id')->references('id')->on('dom_cargos')->onDelete('no action');

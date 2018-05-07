@@ -1,11 +1,4 @@
-function openModal(id){
-  console.log(id);
-  $('#popup').modal('show')
-
-  $('#popup').find('.modal-body btn-app').attr('href', "{{ route('formin.edit',"+id+") }}");
-
-  return true;
-}
+//Funcion para validar rut Chile, solo si es correcto de a cuerdo a modulo 11.
 function validaRut(campo){
 	if ( campo.length == 0 ){ return false; }
 	if ( campo.length < 8 ){ return false; }
@@ -44,9 +37,6 @@ function validaRut(campo){
 	else { return true; }
 }
 
-
-
-
 function adjustIframeHeight() {
       var $body   = $('body'),
           $iframe = $body.data('iframe.fv');
@@ -56,20 +46,36 @@ function adjustIframeHeight() {
       }
   }
 
+//Funcion para realizar suma de valores de cuentas ingresados en un formulario.
+function sumar(){
+  var total = 0;
+  var cuentas= ['matricula', 'arancel', 'pasajes','viaticos','otros']; //define cuentas a utilizar en la suma
+
+   for (var i = 0; i < cuentas.length ; i++) {
+     valor = document.getElementById(cuentas[i]).value;
+      // Aquí valido si hay un valor previo, si no hay datos, le pongo un cero "0".
+     valor = (valor == null || valor == undefined || valor == "") ? 0 : valor;
+     parseInt(valor);// Convertir el valor a un entero (número).
+     /* Esta es la suma. Con convercion explicita a int*/
+     total = (parseInt(total) + parseInt(valor));
+   }
+   // Colocar el resultado de la suma en el input "stotal".
+   document.getElementById('stotal').value = total;
+}
 
 $(document).ready(function(){
-
-
-  //validadores personalizados
+  //VALIDADORES VIA REGEX PERSONALIZADOS
+  //validar nombres, solos caracteres y espacios.
   $.validator.addMethod("letrasNombre", function(value, element) {
         return /^[ A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙ'.-]*$/i.test(value);
     }, "Ingrese sólo caracteres y espacios");
 
-
+  //Válida via regex, ingreso formato rut.
   $.validator.addMethod("rutChile", function(value, element) {
         return /^\d{8}[\-][0-9kK]{1}$/i.test(value);
     }, "Ingrese un rut válido y sin puntos, ej.: 02345678-k");
 
+  // Valida que el rut sea correcto de acuerdo a modulo 11 llamando a funcion valida(RUT)
   jQuery.validator.addMethod("rutval", function(value, element) {
         return this.optional(element) || validaRut(value);
   }, "Ingrese un rut válido y sin puntos, ej.: 02345678-k");
@@ -254,7 +260,7 @@ $(document).ready(function(){
           minlength: "Ingrese mínimo 3 caracteres",
         },
         website:{
-          url: "Ingrese un URL válida, ej.: 'https://www.ejemplo.cl'",
+          url: "Ingrese un URL válida, ej.: 'www.ejemplo.cl'",
           maxlength: "la URL no debe tener más de 100 caracteres"
         },
         pais:{
@@ -334,6 +340,7 @@ $(document).ready(function(){
           maxlength: "No puede Ingresar un valor mayo a 99.999.999",
           digits: "Ingrese solo números",
         },
+
     },
     errorElement: "em",
     errorPlacement: function ( error, element ) {
@@ -355,7 +362,7 @@ $(document).ready(function(){
 
   });
 
-
+  //especificacion jquery steps.
   $("#form-content").steps({
     headerTag: "h5",
     bodyTag: "section",
@@ -410,70 +417,56 @@ $(document).ready(function(){
     }
   });//fin steps
 
-
+  //activacion select2
   $('.select2').select2().on('change', function() {
   $(this).trigger('blur');});
 
-  /*
-  $(".datepicker").datepicker({
-          changeMonth: true,
-          changeYear: true,
-          yearRange: "2018:2025",
-          format: "yyyy-mm-dd",
-          minDate: 0,
-          defaultDate: null,
-          autoclose: true,
-      }).on('change', function() {
-          $(this).valid();
-      });
-*/
-
-      $('input[name="ida_retorno"]').daterangepicker({
-        "autoApply": true,
-        "opens": "right",
-        "drops": "up",
-        "showCustomRangeLabel": false,
-        "locale": {
-        "format": "YYYY-MM-DD",
-        "separator": " / ",
-      },
-      }).on('change', function() {
-          console.log(  $('input[name="ida_retorno"]').val());
-          $(this).valid();
-      });
-    //$('.phone').inputmask('(+99) 9999-9999', {numericInput: true });    //123456  =>  € ___.__1.234,56
-
-    $('div.alert').delay(3000).fadeOut(350);
+  $('input[name="ida_retorno"]').daterangepicker({
+    "autoApply": true,
+    "opens": "right",
+    "drops": "up",
+    "showCustomRangeLabel": false,
+    "locale": {
+      "format": "YYYY-MM-DD",
+      "separator": " / ",
+    },
+  }).on('change', function() {
+    console.log(  $('input[name="ida_retorno"]').val()); //para test, indica valor de fecha
+    $(this).valid();
+  });
 
 
+  //$('.phone').inputmask('(+99) 9999-9999', {numericInput: true });    //123456  =>  € ___.__1.234,56
+
+  //quita el div de alerta, trasncurridos 5seg.
+  $('div.alert').delay(5000).fadeOut(350);
 
 // select anidado para ciuades y paises
   $(document).on('change','#countries',function(){
     var country_id=$(this).val();
     var div=$(this).parent();
     var op=" ";
-
+    //consulta via ajax y trae ciudades para pais "country_id"
     $.ajax({
       type:'get',
       url:'/formin/getCities',
       data:{'id':country_id},
       dataType: 'json',
       success:function(data){
-        console.log(data);
+        //llena el select de ciudades con el arreglo "data"
         $('#cities').empty();
         op+='<option value="0" selected disabled>Seleccione una ciudad</option>';
         for(var i=0;i<data.length;i++){
           op+='<option value="'+data[i].id+'">'+data[i].ciudad+'</option>';
         }
         $("#cities").append(op);
-
       },
       error:function(){
       }
     });
   });
 
-//muestra input para nombre del plan de estudio.
+//muestra input para nombre del plan de estudio, al seleccionar carreras id=['31','32','33','34','35'] correspondiente a postgrados, por el contrario, oculta el input
   $("#carreras").change(function(e) {
     var carrera_id=$(this).val();
     var div=$(this).parent();
@@ -486,6 +479,7 @@ $(document).ready(function(){
       $('#postin').removeAttr("required");
     }
    });
+
 
    $(function () {
        $('#last').DataTable({

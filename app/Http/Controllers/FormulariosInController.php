@@ -144,6 +144,8 @@ class FormulariosInController extends Controller
 
   public function edit($id){
 
+    return view("adminlte::errors.404");
+
     $form            = FormularioIn::findOrFail($id);
     $cities          = City::orderBy('ciudad', 'asc')->get();
     $countries       = Country::All();

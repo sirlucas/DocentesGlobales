@@ -406,7 +406,7 @@
                           <div class="divisa input-group-addon">
                             <i class="fa fa-dollar"></i>
                           </div>
-                          <input type="text" name="matricula">
+                          <input type="text" name="matricula" id="matricula"  onchange="sumar();">
                         </div>
                       </td>
                       <td>
@@ -420,7 +420,7 @@
                           <div class="divisa input-group-addon">
                             <i class="fa fa-dollar"></i>
                           </div>
-                          <input type="text" name="arancel">
+                          <input type="text" name="arancel" id="arancel" onchange="sumar();" >
                         </div>
                       </td>
                       <td>
@@ -434,7 +434,7 @@
                           <div class="divisa input-group-addon">
                             <i class="fa fa-dollar"></i>
                           </div>
-                          <input type="text" name="pasajes">
+                          <input type="text" name="pasajes" id="pasajes" onchange="sumar();">
                         </div>
                       </td>
                       <td>
@@ -448,7 +448,7 @@
                           <div class="divisa input-group-addon">
                             <i class="fa fa-dollar"></i>
                           </div>
-                          <input type="text" name="viaticos">
+                          <input type="text" name="viaticos" id="viaticos" onchange="sumar();">
                         </div>
                       </td>
                       <td>
@@ -462,7 +462,7 @@
             							<div class="divisa input-group-addon">
             								<i class="fa fa-dollar"></i>
             							</div>
-                          <input type="text" name="otros">
+                          <input type="text" name="otros" id="otros" onchange="sumar();">
             						</div>
                       </td>
                       <td>
@@ -476,7 +476,7 @@
                           <div class="divisa input-group-addon">
                             <i class="fa fa-dollar"></i>
                           </div>
-                          <input type="text" name="total">
+                          <input type="text" id="stotal" name="total">
                         </div>
                       </td>
                       <td>
